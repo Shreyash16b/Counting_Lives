@@ -1,8 +1,3 @@
-import 'package:areeb_s_application2/presentation/app_navigation_screen/app_navigation_screen.dart';
-import 'package:areeb_s_application2/presentation/service_profile_page/service_profile_page.dart';
-import 'package:areeb_s_application2/presentation/service_profile_review_container_screen/service_profile_review_container_screen.dart';
-import 'package:areeb_s_application2/presentation/service_profile_review_page/service_profile_review_page.dart';
-import 'package:areeb_s_application2/presentation/service_profile_tab_container_screen/service_profile_tab_container_screen.dart';
 import 'package:areeb_s_application2/presentation/services_screen/services_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
