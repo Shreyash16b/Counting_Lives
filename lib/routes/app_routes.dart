@@ -52,7 +52,8 @@ class AppRoutes {
   static const String documentUploadScreen = '/document_upload_screen';
   static const String onboardFinalScreen = '/onboard_final_screen';
   static const String homeScreen = '/home_screen';
-  static const String homeSwipeUpScreen = '/home_swipe_up_screen';
+  // static const String homeSwipeUpScreen = '/home_swipe_up_screen';
+  static const String homeSwipeUpScreen = '/home_swipe_up';
   static const String categoryViewScreen = '/category_view_screen';
   static const String categoryViewSortScreen = '/category_view_sort_screen';
   static const String categoryViewSortOneScreen =

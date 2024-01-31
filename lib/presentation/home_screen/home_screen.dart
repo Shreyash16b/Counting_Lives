@@ -233,16 +233,20 @@ class HomeScreen extends GetWidget<HomeController> {
   void onTapSettings() {
     // Implement the logic for onTapSettings
     print('Settings tapped!');
+    Get.toNamed(AppRoutes.homeSwipeUpScreen);
     // Add your logic here
   }
 
   void onTapFortySix() {
     // Implement the logic for onTapFortySix
     print('FortySix tapped!');
+    Get.toNamed(AppRoutes.homeSwipeUpScreen);
     // Add your logic here
   }
 
   void onTapNext() {
+    print('Next button tapped!');
     Get.toNamed(AppRoutes.homeSwipeUpScreen);
+    print('Navigating to the next screen...');
   }
 }
