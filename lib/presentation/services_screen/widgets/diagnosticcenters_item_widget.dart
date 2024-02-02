@@ -1,5 +1,5 @@
-import 'package:areeb_s_application2/core/app_export.dart';
-import 'package:areeb_s_application2/widgets/custom_rating_bar.dart';
+import 'package:counting_lives/core/app_export.dart';
+import 'package:counting_lives/widgets/custom_rating_bar.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable

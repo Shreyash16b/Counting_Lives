@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:areeb_s_application2/presentation/services_screen/services_screen.dart';
-import 'package:areeb_s_application2/presentation/service_profile_tab_container_screen/service_profile_tab_container_screen.dart';
-import 'package:areeb_s_application2/presentation/service_profile_review_container_screen/service_profile_review_container_screen.dart';
-import 'package:areeb_s_application2/presentation/service_appointment_book_one_screen/service_appointment_book_one_screen.dart';
-import 'package:areeb_s_application2/presentation/service_appointment_book_two_screen/service_appointment_book_two_screen.dart';
-import 'package:areeb_s_application2/presentation/service_appointment_book_success_screen/service_appointment_book_success_screen.dart';
-import 'package:areeb_s_application2/presentation/service_appointment_book_reschedule_screen/service_appointment_book_reschedule_screen.dart';
-import 'package:areeb_s_application2/presentation/service_appointment_book_reschedule_two_screen/service_appointment_book_reschedule_two_screen.dart';
-import 'package:areeb_s_application2/presentation/service_appointment_book_reschedule_success_screen/service_appointment_book_reschedule_success_screen.dart';
-import 'package:areeb_s_application2/presentation/services_sort_screen/services_sort_screen.dart';
-import 'package:areeb_s_application2/presentation/services_filter_screen/services_filter_screen.dart';
-import 'package:areeb_s_application2/presentation/services_criteria_screen/services_criteria_screen.dart';
-import 'package:areeb_s_application2/presentation/app_navigation_screen/app_navigation_screen.dart';
+import 'package:counting_lives/presentation/services_screen/services_screen.dart';
+import 'package:counting_lives/presentation/service_profile_tab_container_screen/service_profile_tab_container_screen.dart';
+import 'package:counting_lives/presentation/service_appointment_book_one_screen/service_appointment_book_one_screen.dart';
+import 'package:counting_lives/presentation/service_appointment_book_two_screen/service_appointment_book_two_screen.dart';
+import 'package:counting_lives/presentation/service_appointment_book_success_screen/service_appointment_book_success_screen.dart';
+import 'package:counting_lives/presentation/app_navigation_screen/app_navigation_screen.dart';
 
 class AppRoutes {
   static const String servicesScreen = '/services_screen';
@@ -59,23 +52,12 @@ class AppRoutes {
     servicesScreen: (context) => ServicesScreen(),
     serviceProfileTabContainerScreen: (context) =>
         ServiceProfileTabContainerScreen(),
-    serviceProfileReviewContainerScreen: (context) =>
-        ServiceProfileReviewContainerScreen(),
     serviceAppointmentBookOneScreen: (context) =>
         ServiceAppointmentBookOneScreen(),
     serviceAppointmentBookTwoScreen: (context) =>
         ServiceAppointmentBookTwoScreen(),
     serviceAppointmentBookSuccessScreen: (context) =>
         ServiceAppointmentBookSuccessScreen(),
-    serviceAppointmentBookRescheduleScreen: (context) =>
-        ServiceAppointmentBookRescheduleScreen(),
-    serviceAppointmentBookRescheduleTwoScreen: (context) =>
-        ServiceAppointmentBookRescheduleTwoScreen(),
-    serviceAppointmentBookRescheduleSuccessScreen: (context) =>
-        ServiceAppointmentBookRescheduleSuccessScreen(),
-    servicesSortScreen: (context) => ServicesSortScreen(),
-    servicesFilterScreen: (context) => ServicesFilterScreen(),
-    servicesCriteriaScreen: (context) => ServicesCriteriaScreen(),
     appNavigationScreen: (context) => AppNavigationScreen()
   };
 }

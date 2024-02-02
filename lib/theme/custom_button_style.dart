@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:areeb_s_application2/core/app_export.dart';
+import 'package:counting_lives/core/app_export.dart';
 import 'package:flutter/material.dart';
 
 /// A class that offers pre-defined button styles for customizing button appearance.

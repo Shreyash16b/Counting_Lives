@@ -1,12 +1,12 @@
-import 'package:areeb_s_application2/core/app_export.dart';
-import 'package:areeb_s_application2/presentation/services_screen/services_screen.dart';
-import 'package:areeb_s_application2/widgets/app_bar/appbar_leading_image.dart';
-import 'package:areeb_s_application2/widgets/app_bar/appbar_title.dart';
-import 'package:areeb_s_application2/widgets/app_bar/appbar_trailing_image.dart';
-import 'package:areeb_s_application2/widgets/app_bar/custom_app_bar.dart';
-import 'package:areeb_s_application2/widgets/custom_elevated_button.dart';
+import 'package:counting_lives/core/app_export.dart';
+import 'package:counting_lives/presentation/services_screen/services_screen.dart';
+import 'package:counting_lives/widgets/app_bar/appbar_leading_image.dart';
+import 'package:counting_lives/widgets/app_bar/appbar_title.dart';
+import 'package:counting_lives/widgets/app_bar/appbar_trailing_image.dart';
+import 'package:counting_lives/widgets/app_bar/custom_app_bar.dart';
+import 'package:counting_lives/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
-import 'package:areeb_s_application2/core/utils/image_constant.dart';
+import 'package:counting_lives/core/utils/image_constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ServiceAppointmentBookSuccessScreen extends StatelessWidget {

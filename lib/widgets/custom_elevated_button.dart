@@ -1,5 +1,5 @@
-import 'package:areeb_s_application2/core/app_export.dart';
-import 'package:areeb_s_application2/widgets/base_button.dart';
+import 'package:counting_lives/core/app_export.dart';
+import 'package:counting_lives/widgets/base_button.dart';
 import 'package:flutter/material.dart';
 
 class CustomElevatedButton extends BaseButton {

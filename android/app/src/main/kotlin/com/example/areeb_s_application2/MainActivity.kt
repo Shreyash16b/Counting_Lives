@@ -1,4 +1,4 @@
-package com.example.areeb_s_application2
+package com.example.counting_lives
 
 import io.flutter.embedding.android.FlutterActivity
 

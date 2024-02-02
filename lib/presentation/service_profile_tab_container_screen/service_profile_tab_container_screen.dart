@@ -1,15 +1,16 @@
-import 'package:areeb_s_application2/core/app_export.dart';
-import 'package:areeb_s_application2/presentation/service_profile_details_page/service_profile_details_page.dart';
-import 'package:areeb_s_application2/presentation/service_profile_page/service_profile_page.dart';
-//import 'package:areeb_s_application2/presentation/service_profile_review_container_screen/service_profile_review_container_screen.dart';
-import 'package:areeb_s_application2/widgets/app_bar/appbar_leading_image.dart';
-import 'package:areeb_s_application2/widgets/app_bar/appbar_title.dart';
-import 'package:areeb_s_application2/widgets/app_bar/appbar_trailing_image.dart';
-import 'package:areeb_s_application2/widgets/app_bar/custom_app_bar.dart';
-import 'package:areeb_s_application2/widgets/custom_elevated_button.dart';
+import 'package:counting_lives/core/app_export.dart';
+import 'package:counting_lives/presentation/service_profile_details_page/service_profile_details_page.dart';
+import 'package:counting_lives/presentation/service_profile_page/service_profile_page.dart';
+//import 'package:counting_lives/presentation/service_profile_review_container_screen/service_profile_review_container_screen.dart';
+import 'package:counting_lives/widgets/app_bar/appbar_leading_image.dart';
+import 'package:counting_lives/widgets/app_bar/appbar_title.dart';
+import 'package:counting_lives/widgets/app_bar/appbar_trailing_image.dart';
+import 'package:counting_lives/widgets/app_bar/custom_app_bar.dart';
+import 'package:counting_lives/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
-import 'package:areeb_s_application2/presentation/service_profile_review_page/service_profile_review_page.dart';
-import 'package:areeb_s_application2/presentation/service_appointment_book_one_screen/service_appointment_book_one_screen.dart';
+import 'package:counting_lives/presentation/service_profile_review_page/service_profile_review_page.dart';
+import 'package:counting_lives/presentation/service_appointment_book_one_screen/service_appointment_book_one_screen.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ServiceProfileTabContainerScreen extends StatefulWidget {
   const ServiceProfileTabContainerScreen({Key? key}) : super(key: key);
@@ -50,7 +51,9 @@ class ServiceProfileTabContainerScreenState
                       decoration:
                           CustomButtonStyles.gradientDeepOrangeToPinkDecoration,
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => ServiceAppointmentBookOneScreen()));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (ctx) =>
+                                ServiceAppointmentBookOneScreen()));
                       }),
                   SizedBox(height: 32.v),
                   _buildTabview(context),
@@ -60,7 +63,6 @@ class ServiceProfileTabContainerScreenState
                           child: TabBarView(
                               controller: tabviewController,
                               children: [
-                                ServiceProfilePage(),
                                 ServiceProfilePage(),
                                 ServiceProfileReviewPage(),
                                 ServiceProfileDetailsPage()
@@ -76,7 +78,7 @@ class ServiceProfileTabContainerScreenState
             imagePath: ImageConstant.imgArrowDown,
             margin: EdgeInsets.only(left: 26.h, top: 22.v, bottom: 22.v)),
         centerTitle: true,
-        title: AppbarTitle(text: "Modern Diagnostic Center"),
+        title: AppbarTitle(text: "Hospital Name"),
         actions: [
           AppbarTrailingImage(
               imagePath: ImageConstant.imgSearch,
@@ -104,40 +106,29 @@ class ServiceProfileTabContainerScreenState
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                            width: 208.h,
-                            margin: EdgeInsets.only(left: 1.h),
-                            child: Row(children: [
-                              CustomImageView(
-                                  imagePath: ImageConstant.imgCall,
-                                  height: 10.adaptSize,
-                                  width: 10.adaptSize,
-                                  margin: EdgeInsets.only(top: 2.v)),
+                          width: 208.h,
+                          margin: EdgeInsets.only(left: 1.h),
+                          child: Row(
+                            children: [
+                              SvgPicture.asset(
+                                ImageConstant.imgCall,
+                                height: 10.adaptSize,
+                                width: 10.adaptSize,
+                              ),
                               Padding(
                                   padding: EdgeInsets.only(left: 16.h),
-                                  child: Text("+91-8855998855",
+                                  child: Text("Contact Number",
                                       style:
                                           CustomTextStyles.bodySmallGray70010)),
-                              Spacer(),
-                              CustomImageView(
-                                  imagePath: ImageConstant.imgFavorite,
-                                  height: 13.v,
-                                  width: 15.h)
-                            ])),
-                        SizedBox(height: 13.v),
-                        Padding(
-                            padding: EdgeInsets.only(left: 1.h),
-                            child: Row(children: [
-                              CustomImageView(
-                                  imagePath: ImageConstant.imgClose,
-                                  height: 16.v,
-                                  width: 8.h),
-                              Padding(
-                                  padding: EdgeInsets.only(left: 17.h),
-                                  child: Text("8.5 Years",
-                                      style:
-                                          CustomTextStyles.bodySmallGray70010))
-                            ])),
-                        SizedBox(height: 12.v),
+                              // Spacer(),
+                              // SvgPicture.asset(
+                              //     ImageConstant.imgFavorite,
+                              //     height: 13.v,
+                              //     width: 15.h)
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 8.v),
                         Padding(
                             padding: EdgeInsets.only(left: 1.h),
                             child: Row(children: [
@@ -198,15 +189,6 @@ class ServiceProfileTabContainerScreenState
                     width: 15.adaptSize),
                 Padding(
                     padding: EdgeInsets.only(top: 8.v), child: Text("Timings"))
-              ])),
-              Tab(
-                  child: Column(children: [
-                CustomImageView(
-                    imagePath: ImageConstant.imgClockGray50002,
-                    height: 15.adaptSize,
-                    width: 15.adaptSize),
-                Padding(
-                    padding: EdgeInsets.only(top: 6.v), child: Text("Photos"))
               ])),
               Tab(
                   child: Column(children: [

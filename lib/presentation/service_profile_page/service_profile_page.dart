@@ -1,5 +1,5 @@
-import 'package:areeb_s_application2/core/app_export.dart';
-import 'package:areeb_s_application2/widgets/custom_elevated_button.dart';
+import 'package:counting_lives/core/app_export.dart';
+import 'package:counting_lives/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as fs;
 

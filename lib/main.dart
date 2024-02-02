@@ -1,4 +1,5 @@
-import 'package:areeb_s_application2/presentation/services_screen/services_screen.dart';
+import 'package:counting_lives/presentation/Welcome_1.dart';
+import 'package:counting_lives/presentation/services_screen/services_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
@@ -23,11 +24,12 @@ class MyApp extends StatelessWidget {
       builder: (context, orientation, deviceType) {
         return MaterialApp(
           theme: theme,
-          title: 'areeb_s_application2',
+          title: 'counting_lives',
           debugShowCheckedModeBanner: false,
           // home: AppNavigationScreen(),
           // home: ServiceProfileReviewPage(),
-          home: ServicesScreen(),
+          home: Welcome_1(),
+          // home: ServicesScreen(),
           // home: ServiceProfilePage(),
           // home: ServiceProfileTabContainerScreen(),
           // initialRoute: AppRoutes.appNavigationScreen,

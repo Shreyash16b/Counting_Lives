@@ -1,4 +1,4 @@
-import 'package:areeb_s_application2/core/app_export.dart';
+import 'package:counting_lives/core/app_export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
