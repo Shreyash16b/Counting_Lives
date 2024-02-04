@@ -48,9 +48,11 @@ class _SignUpSuccessState extends State<SignUpSuccess> {
                         Color.fromARGB(255, 255, 153, 85),
                         Color.fromARGB(255, 255, 85, 153)
                       ])),
-              child: Column(children: [
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
                 const SizedBox(
-                  height: 15,
+                  height: 100,
                 ),
                 Container(
                   height: 100,
@@ -70,74 +72,75 @@ class _SignUpSuccessState extends State<SignUpSuccess> {
                     style: TextStyle(fontSize: 30, color: Colors.white),
                   ),
                 ),
-                Column(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: SizedBox(
-                        width: 300,
-                        child: TextFormField(
-                          decoration: const InputDecoration(
-                              contentPadding: EdgeInsets.symmetric(
-                                  vertical: 4, horizontal: 4),
-                              hintText: "Enter your email id/phone number",
-                              labelText: "Email ID/ Phone Number",
-                              hintStyle: TextStyle(
-                                  color: Color.fromARGB(174, 51, 51, 51),
-                                  fontWeight: FontWeight.w200)),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Username cannot be empty";
-                            } else if (value.length < 4) {
-                              return "Username must be at least 4 characters long";
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 25,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: SizedBox(
-                        width: 300,
-                        child: TextField(
-                          obscureText: passwordVisible,
-                          decoration: InputDecoration(
-                            contentPadding: const EdgeInsets.symmetric(
-                                vertical: 4, horizontal: 4),
-                            hintText: "Password",
-                            labelText: "Password",
-                            suffixIcon: IconButton(
-                              icon: Icon(passwordVisible
-                                  ? Icons.visibility_off
-                                  : Icons.visibility),
-                              onPressed: () {
-                                setState(
-                                  () {
-                                    passwordVisible = !passwordVisible;
-                                  },
-                                );
-                              },
-                            ),
-                            // alignLabelWithHint: false,
-                            // filled: true,
-                          ),
-                          // keyboardType: TextInputType.visiblePassword,
-                          // textInputAction: TextInputAction.done,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                // Column(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     // Container(
+                //     //   decoration: BoxDecoration(
+                //     //     color: Colors.white,
+                //     //     borderRadius: BorderRadius.circular(8),
+                //     //   ),
+                //     //   child: SizedBox(
+                //     //     width: 300,
+                //     //     child: TextFormField(
+                //     //       decoration: const InputDecoration(
+                //     //           contentPadding: EdgeInsets.symmetric(
+                //     //               vertical: 4, horizontal: 4),
+                //     //           hintText: "Enter your email id/phone number",
+                //     //           labelText: "Email ID/ Phone Number",
+                //     //           hintStyle: TextStyle(
+                //     //               color: Color.fromARGB(174, 51, 51, 51),
+                //     //               fontWeight: FontWeight.w200)),
+                //     //       validator: (value) {
+                //     //         if (value!.isEmpty) {
+                //     //           return "Username cannot be empty";
+                //     //         } else if (value.length < 4) {
+                //     //           return "Username must be at least 4 characters long";
+                //     //         }
+                //     //         return null;
+                //     //       },
+                //     //     ),
+                //     //   ),
+                //     // ),
+                //     // const SizedBox(
+                //     //   height: 25,
+                //     // ),
+                //     // Container(
+                //     //   decoration: BoxDecoration(
+                //     //     color: Colors.white,
+                //     //     borderRadius: BorderRadius.circular(8),
+                //     //   ),
+                //     //   child: SizedBox(
+                //     //     width: 300,
+                //     //     child: TextField(
+                //     //       obscureText: passwordVisible,
+                //     //       decoration: InputDecoration(
+                //     //         contentPadding: const EdgeInsets.symmetric(
+                //     //             vertical: 4, horizontal: 4),
+                //     //         hintText: "Password",
+                //     //         labelText: "Password",
+                //     //         suffixIcon: IconButton(
+                //     //           icon: Icon(passwordVisible
+                //     //               ? Icons.visibility_off
+                //     //               : Icons.visibility),
+                //     //           onPressed: () {
+                //     //             setState(
+                //     //               () {
+                //     //                 passwordVisible = !passwordVisible;
+                //     //               },
+                //     //             );
+                //     //           },
+                //     //         ),
+                //     //         // alignLabelWithHint: false,
+                //     //         // filled: true,
+                //     //       ),
+                //     //       // keyboardType: TextInputType.visiblePassword,
+                //     //       // textInputAction: TextInputAction.done,
+                //     //     ),
+                //     //   ),
+                //     // ),
+                //   ],
+                // ),
                 const SizedBox(
                   height: 30,
                 ),

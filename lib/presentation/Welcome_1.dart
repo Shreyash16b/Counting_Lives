@@ -32,7 +32,7 @@ class Welcome_1 extends StatelessWidget {
               height: 15,
             ),
             Container(
-              height: 755,
+              // height: double.infinity,
               width: MediaQuery.of(context).size.width,
               // width: double.maxFinite,
               // height: double.infinity,

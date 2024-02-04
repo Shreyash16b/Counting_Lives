@@ -13,7 +13,7 @@ import 'package:counting_lives/presentation/service_appointment_book_one_screen/
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ServiceProfileTabContainerScreen extends StatefulWidget {
-  const ServiceProfileTabContainerScreen({Key? key}) : super(key: key);
+  const ServiceProfileTabContainerScreen({super.key});
 
   @override
   ServiceProfileTabContainerScreenState createState() =>
@@ -35,39 +35,49 @@ class ServiceProfileTabContainerScreenState
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-            backgroundColor: appTheme.whiteA700,
-            appBar: _buildAppBar(context),
-            body: SizedBox(
-                width: double.maxFinite,
-                child: Column(children: [
-                  SizedBox(height: 18.v),
-                  _buildCallRow(context),
-                  SizedBox(height: 20.v),
-                  CustomElevatedButton(
-                      text: "Book Appointment",
-                      margin: EdgeInsets.symmetric(horizontal: 26.h),
-                      buttonStyle: CustomButtonStyles.none,
-                      decoration:
-                          CustomButtonStyles.gradientDeepOrangeToPinkDecoration,
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (ctx) =>
-                                ServiceAppointmentBookOneScreen()));
-                      }),
-                  SizedBox(height: 32.v),
-                  _buildTabview(context),
-                  Expanded(
-                      child: SizedBox(
-                          height: 416.v,
-                          child: TabBarView(
-                              controller: tabviewController,
-                              children: [
-                                ServiceProfilePage(),
-                                ServiceProfileReviewPage(),
-                                ServiceProfileDetailsPage()
-                              ])))
-                ]))));
+      child: Scaffold(
+        backgroundColor: appTheme.whiteA700,
+        appBar: _buildAppBar(context),
+        body: SizedBox(
+          width: double.maxFinite,
+          child: Column(
+            children: [
+              SizedBox(height: 18.v),
+              _buildCallRow(context),
+              SizedBox(height: 20.v),
+              CustomElevatedButton(
+                  text: "Book Appointment",
+                  margin: EdgeInsets.symmetric(horizontal: 26.h),
+                  buttonStyle: CustomButtonStyles.none,
+                  decoration:
+                      CustomButtonStyles.gradientDeepOrangeToPinkDecoration,
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (ctx) => ServiceAppointmentBookOneScreen(),
+                      ),
+                    );
+                  }),
+              SizedBox(height: 32.v),
+              _buildTabview(context),
+              Expanded(
+                child: SizedBox(
+                  height: 416.v,
+                  child: TabBarView(
+                    controller: tabviewController,
+                    children: [
+                      ServiceProfilePage(),
+                      ServiceProfileReviewPage(),
+                      ServiceProfileDetailsPage()
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   /// Section Widget
@@ -90,74 +100,82 @@ class ServiceProfileTabContainerScreenState
   /// Section Widget
   Widget _buildCallRow(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 26.h),
-        child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomImageView(
-                  imagePath: ImageConstant.imgRectangle2264,
-                  height: 113.v,
-                  width: 98.h,
-                  radius: BorderRadius.circular(15.h)),
-              Padding(
-                  padding: EdgeInsets.only(left: 16.h, top: 10.v, bottom: 14.v),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 208.h,
-                          margin: EdgeInsets.only(left: 1.h),
-                          child: Row(
-                            children: [
-                              SvgPicture.asset(
-                                ImageConstant.imgCall,
-                                height: 10.adaptSize,
-                                width: 10.adaptSize,
-                              ),
-                              Padding(
-                                  padding: EdgeInsets.only(left: 16.h),
-                                  child: Text("Contact Number",
-                                      style:
-                                          CustomTextStyles.bodySmallGray70010)),
-                              // Spacer(),
-                              // SvgPicture.asset(
-                              //     ImageConstant.imgFavorite,
-                              //     height: 13.v,
-                              //     width: 15.h)
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 8.v),
-                        Padding(
-                            padding: EdgeInsets.only(left: 1.h),
-                            child: Row(children: [
-                              CustomImageView(
-                                  imagePath: ImageConstant.imgUser,
-                                  height: 10.adaptSize,
-                                  width: 10.adaptSize,
-                                  margin: EdgeInsets.symmetric(vertical: 1.v)),
-                              Padding(
-                                  padding: EdgeInsets.only(left: 16.h),
-                                  child: Text(
-                                      "CT Scan, X Ray, MRI, Doppler, 2D",
-                                      style:
-                                          CustomTextStyles.bodySmallGray70010))
-                            ])),
-                        SizedBox(height: 8.v),
-                        Row(children: [
-                          CustomImageView(
-                              imagePath: ImageConstant.imgSignal,
-                              height: 11.v,
-                              width: 12.h,
-                              margin: EdgeInsets.only(top: 1.v)),
-                          Padding(
-                              padding: EdgeInsets.only(left: 15.h),
-                              child: Text("4.1",
-                                  style: CustomTextStyles.bodySmallGray70010))
-                        ])
-                      ]))
-            ]));
+      padding: EdgeInsets.symmetric(horizontal: 26.h),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CustomImageView(
+              imagePath: ImageConstant.imgRectangle2264,
+              height: 113.v,
+              width: 98.h,
+              radius: BorderRadius.circular(15.h)),
+          Padding(
+            padding: EdgeInsets.only(left: 16.h, top: 10.v, bottom: 14.v),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(height: 12.v),
+                Container(
+                  width: 208.h,
+                  margin: EdgeInsets.only(left: 1.h),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        ImageConstant.imgCall,
+                        height: 10.adaptSize,
+                        width: 10.adaptSize,
+                      ),
+                      Padding(
+                          padding: EdgeInsets.only(left: 16.h),
+                          child: Text("Contact Number",
+                              style: CustomTextStyles.bodySmallGray70010)),
+                      // Spacer(),
+                      // SvgPicture.asset(
+                      //     ImageConstant.imgFavorite,
+                      //     height: 13.v,
+                      //     width: 15.h)
+                    ],
+                  ),
+                ),
+                SizedBox(height: 16.v),
+                Padding(
+                  padding: EdgeInsets.only(left: 1.h),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        ImageConstant.imgUser,
+                        height: 10.adaptSize,
+                        width: 10.adaptSize,
+                      ),
+                      Padding(
+                          padding: EdgeInsets.only(left: 16.h),
+                          child: Text("CT Scan, X Ray, MRI, Doppler, 2D",
+                              style: CustomTextStyles.bodySmallGray70010))
+                    ],
+                  ),
+                ),
+                SizedBox(height: 16.v),
+                Row(
+                  children: [
+                    SvgPicture.asset(
+                      ImageConstant.imgSignal,
+                      height: 11.v,
+                      width: 12.h,
+                    ),
+                    Padding(
+                        padding: EdgeInsets.only(left: 15.h),
+                        child: Text("4.1",
+                            style: CustomTextStyles.bodySmallGray70010))
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   /// Section Widget
@@ -225,10 +243,5 @@ class ServiceProfileTabContainerScreenState
           style: CustomTextStyles.bodySmallGray50002
               .copyWith(color: appTheme.gray50002))
     ]);
-  }
-
-  /// Navigates to the serviceAppointmentBookOneScreen when the action is triggered.
-  onTapBookAppointment(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.serviceAppointmentBookOneScreen);
   }
 }

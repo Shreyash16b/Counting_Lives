@@ -1,8 +1,12 @@
+import 'dart:math';
+
 import 'package:counting_lives/presentation/sign_up_success.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
 
+final _firebase = FirebaseAuth.instance;
 class SignUpOTP extends StatefulWidget {
   const SignUpOTP({super.key});
 
@@ -64,9 +68,9 @@ class _SignUpOTPState extends State<SignUpOTP> {
                 ),
                 OTPTextField(
                   controller: otpController,
-                  length: 4,
+                  length: 6,
                   width: MediaQuery.of(context).size.width,
-                  fieldWidth: 80,
+                  fieldWidth: 60,
                   style: TextStyle(fontSize: 17),
                   textFieldAlignment: MainAxisAlignment.spaceAround,
                   fieldStyle: FieldStyle.underline,
@@ -84,13 +88,17 @@ class _SignUpOTPState extends State<SignUpOTP> {
                   child: InkWell(
                     borderRadius: BorderRadius.circular(25),
                     onTap: () {
-                      if (OTPPin == OTPPin) {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (ctx) => SignUpSuccess(),
-                          ),
-                        );
-                      }
+                      // try{
+                      //   PhoneAuthCredential credential = await PhoneAuthProvider.credential(verificationId: widget.verificationid, smsCode: OTPPin.toString());
+                      //   _firebase.signInWithCredential(credential).then((value) => Navigator.of(context).push(
+                      //     MaterialPageRoute(
+                      //       builder: (ctx) => SignUpSuccess(),
+                      //     ),
+                      //   ));
+                      // } catch(error){
+                        
+                      // }
+                        
                     },
                     child: Container(
                       width: 150,
