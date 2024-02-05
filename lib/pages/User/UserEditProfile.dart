@@ -2,6 +2,7 @@ import 'package:counting_lives_shreyash/Constants/Constants.dart';
 import 'package:counting_lives_shreyash/Helper/HelperFunctions.dart';
 import 'package:flutter/material.dart';
 
+import '../../drawers/userProfileDrawer.dart';
 import 'UserSettings.dart';
 
 class UserEditProfile extends StatefulWidget {
@@ -24,6 +25,7 @@ class _UserEditProfileState extends State<UserEditProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const UserProfileDrawer(userName: "userName"),
       backgroundColor: Colors.white,
       appBar: AppBar(
         leading: const Icon(

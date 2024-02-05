@@ -1,3 +1,4 @@
+import 'package:counting_lives_shreyash/drawers/hospitalProfileDrawer.dart';
 import 'package:flutter/material.dart';
 
 import '../../Constants/constants.dart';
@@ -15,7 +16,7 @@ class _Add_RemoveDoctorState extends State<Add_RemoveDoctor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const DoctorProfileDrawer(doctorName: "doctorName"),
+      drawer: const HospitalProfileDrawer(hospitalName: "hospitalName"),
       appBar: AppBar(
         centerTitle: true,
         flexibleSpace: Container(
@@ -43,7 +44,7 @@ class _Add_RemoveDoctorState extends State<Add_RemoveDoctor> {
                       dorctorAddress: "dorctorAddress",
                       doctorFromTime: TimeOfDay(hour: 10, minute: 0),
                       doctorToTime: TimeOfDay(hour: 10, minute: 30),
-                      remove: false);
+                      remove: true);
                 }),
           ),
           Center(

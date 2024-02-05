@@ -1,19 +1,22 @@
-import 'package:counting_lives_shreyash/HospitalCard.dart';
+import 'package:counting_lives_shreyash/drawers/userProfileDrawer.dart';
 import 'package:flutter/material.dart';
 
 import '../../Constants/constants.dart';
+import '../../HospitalCard.dart';
 
-class tp extends StatefulWidget {
-  const tp({super.key});
+class UserUpcomingAppointments extends StatefulWidget {
+  const UserUpcomingAppointments({super.key});
 
   @override
-  State<tp> createState() => _tpState();
+  State<UserUpcomingAppointments> createState() =>
+      _UserUpcomingAppointmentsState();
 }
 
-class _tpState extends State<tp> {
+class _UserUpcomingAppointmentsState extends State<UserUpcomingAppointments> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: UserProfileDrawer(userName: "userName"),
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,

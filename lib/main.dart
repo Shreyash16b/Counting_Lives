@@ -4,6 +4,8 @@ import 'package:counting_lives_shreyash/drawers/userProfileDrawer.dart';
 import 'package:counting_lives_shreyash/pages/Hospital/hospitalLogin.dart';
 import 'package:counting_lives_shreyash/pages/Hospital/hospitalSignUp4.dart';
 import 'package:counting_lives_shreyash/pages/Hospital/hospitalUpcomingAppointment.dart';
+import 'package:counting_lives_shreyash/pages/Hospital/tp.dart';
+import 'package:counting_lives_shreyash/pages/User/Home.dart';
 import 'package:flutter/material.dart';
 
 import 'drawers/doctorProfileDrawer.dart';
@@ -86,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      drawer: const HospitalSignUp3(),
+      drawer: const DoctorProfileDrawer(doctorName: "doctorName"),
       appBar: AppBar(
         // TRY THIS: Try changing the color here to a specific color (to
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
@@ -124,12 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ElevatedButton(
                 onPressed: () {
-                  nextScreen(
-                      context,
-                      const HospitalUpcomingAppointments(
-                        hospitalName: "a",
-                        upcomingAppointments: 10,
-                      ));
+                  nextScreen(context, const UserHome());
                 },
                 child: const Text("Trial"))
           ],

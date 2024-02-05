@@ -1,5 +1,6 @@
 import 'package:counting_lives_shreyash/Helper/HelperFunctions.dart';
 import 'package:counting_lives_shreyash/drawers/doctorProfileDrawer.dart';
+import 'package:counting_lives_shreyash/drawers/hospitalProfileDrawer.dart';
 import 'package:counting_lives_shreyash/pages/Hospital/AddRemoveDoctor.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class _EditDoctorsState extends State<EditDoctors> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: const DoctorProfileDrawer(doctorName: "doctorName"),
+        drawer: const HospitalProfileDrawer(hospitalName: "hospitalName"),
         appBar: AppBar(
           centerTitle: true,
           flexibleSpace: Container(
@@ -68,7 +69,7 @@ class _EditDoctorsState extends State<EditDoctors> {
                         ),
                       ),
                       onPressed: () {
-                        nextScreen(context, Add_RemoveDoctor());
+                        nextScreen(context, const Add_RemoveDoctor());
                       },
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.center,

@@ -1,3 +1,4 @@
+import 'package:counting_lives_shreyash/drawers/userProfileDrawer.dart';
 import 'package:flutter/material.dart';
 
 import '../../Constants/Constants.dart';
@@ -35,6 +36,7 @@ class _UserSettingsState extends State<UserSettings> {
         ),
         title: const Text("Profile Settings"),
       ),
+      drawer: const UserProfileDrawer(userName: "userName"),
       body: SingleChildScrollView(
         padding: const EdgeInsets.only(left: 35, right: 35),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
