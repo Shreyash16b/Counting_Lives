@@ -68,6 +68,18 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "csc_picker",
+      "rootUri": "file:///C:/Users/Areeb/AppData/Local/Pub/Cache/hosted/pub.dev/csc_picker-0.2.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "cupertino_icons",
+      "rootUri": "file:///C:/Users/Areeb/AppData/Local/Pub/Cache/hosted/pub.dev/cupertino_icons-1.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "custom_radio_grouped_button",
       "rootUri": "file:///C:/Users/Areeb/AppData/Local/Pub/Cache/hosted/pub.dev/custom_radio_grouped_button-2.2.1",
       "packageUri": "lib/",
@@ -446,7 +458,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2024-02-05T17:05:58.088735Z",
+  "generated": "2024-02-05T17:14:19.049602Z",
   "generator": "pub",
   "generatorVersion": "3.1.3"
 }
