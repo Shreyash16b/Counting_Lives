@@ -1,0 +1,38 @@
+name: counting_lives
+description: A new Flutter project.
+version: 1.0.0+1
+environment: 
+  sdk: '>=2.17.0 <3.0.0'
+dependencies: 
+  flutter: 
+    sdk: flutter
+  cached_network_image: ^3.3.0
+  flutter_svg: ^2.0.9
+  flutter_rating_bar: ^4.0.1
+  flutter_svg_provider: 1.0.6
+  intl: ^0.19.0
+  pinput: ^3.0.1
+  otp_text_field: ^1.1.3
+  custom_radio_grouped_button: ^2.2.1
+  firebase_core: ^2.24.2
+  firebase_auth: ^4.16.0
+dev_dependencies: 
+  flutter_test: 
+    sdk: flutter
+flutter: 
+  uses-material-design: true
+  assets: 
+    - assets/
+    - assets/images/
+    - assets/images/image_not_found.png
+  fonts: 
+    - family: Mulish
+      fonts: 
+        - asset: assets/fonts/MulishBold.ttf
+          weight: 700
+        - asset: assets/fonts/MulishRegular.ttf
+          weight: 400
+        - asset: assets/fonts/MulishRomanRegular.ttf
+          weight: 400
+        - asset: assets/fonts/MulishExtraBold.ttf
+          weight: 800
