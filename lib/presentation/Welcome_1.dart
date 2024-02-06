@@ -1,3 +1,5 @@
+import 'package:counting_lives/Helper/HelperFunctions.dart';
+import 'package:counting_lives/pages/Hospital/hospitalLogin.dart';
 import 'package:flutter/material.dart';
 import 'package:counting_lives/presentation/User_SignIn.dart';
 
@@ -145,7 +147,7 @@ class Welcome_1 extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25),
                     child: InkWell(
                       borderRadius: BorderRadius.circular(25),
-                      onTap: () => moveToUserSignIn(context),
+                      onTap: () => nextScreen(context, HospitalLogin()),
                       child: Container(
                         width: 150,
                         height: 50,

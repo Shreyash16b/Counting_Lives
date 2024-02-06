@@ -1,5 +1,6 @@
 import 'package:counting_lives/pages/Hospital/hospitalSignUp1.dart';
 import 'package:counting_lives/pages/Hospital/hospitalUpcomingAppointment.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../Constants/constants.dart';
@@ -12,13 +13,35 @@ class HospitalLogin extends StatefulWidget {
   State<HospitalLogin> createState() => _HospitalLoginState();
 }
 
+final _firebase = FirebaseAuth.instance;
+
 class _HospitalLoginState extends State<HospitalLogin> {
   bool passwordVisible = false;
+  String hospitalPassword = "";
+  String hospitalEmail = "";
   final formkey = GlobalKey<FormState>();
   @override
   void initState() {
     super.initState();
     passwordVisible = true;
+  }
+
+  void _onSubmit() async {
+    bool isValid = formkey.currentState!.validate();
+    if (isValid) {
+      formkey.currentState!.save();
+
+      try {
+        final userCredentials = await _firebase.createUserWithEmailAndPassword(
+            email: hospitalEmail, password: hospitalPassword);
+        print(userCredentials.user!.uid);
+      } on FirebaseAuthException catch (error) {
+        ScaffoldMessenger.of(context).clearSnackBars();
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(error.message ?? "Authentication Failed")));
+      }
+      nextScreenReplace(context, HospitalSignUp1());
+    }
   }
 
   @override
@@ -93,6 +116,9 @@ class _HospitalLoginState extends State<HospitalLogin> {
                             }
                             return null;
                           },
+                          onSaved: (newValue) {
+                            hospitalEmail = newValue!;
+                          },
                         ),
                       ),
                     ),
@@ -107,8 +133,12 @@ class _HospitalLoginState extends State<HospitalLogin> {
                       ),
                       child: SizedBox(
                         width: 300,
-                        child: TextField(
+                        child: TextFormField(
+                          onSaved: (newValue) {
+                            hospitalPassword = newValue!;
+                          },
                           obscureText: passwordVisible,
+
                           decoration: InputDecoration(
                             contentPadding: const EdgeInsets.symmetric(
                                 vertical: 4, horizontal: 4),

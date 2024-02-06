@@ -56,6 +56,24 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "cloud_firestore",
+      "rootUri": "file:///C:/Users/LENOVO/AppData/Local/Pub/Cache/hosted/pub.dev/cloud_firestore-4.14.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "cloud_firestore_platform_interface",
+      "rootUri": "file:///C:/Users/LENOVO/AppData/Local/Pub/Cache/hosted/pub.dev/cloud_firestore_platform_interface-6.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "cloud_firestore_web",
+      "rootUri": "file:///C:/Users/LENOVO/AppData/Local/Pub/Cache/hosted/pub.dev/cloud_firestore_web-3.9.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "collection",
       "rootUri": "file:///C:/Users/LENOVO/AppData/Local/Pub/Cache/hosted/pub.dev/collection-1.17.2",
       "packageUri": "lib/",
@@ -458,7 +476,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2024-02-06T07:55:27.481950Z",
+  "generated": "2024-02-06T14:38:33.148250Z",
   "generator": "pub",
   "generatorVersion": "3.1.5"
 }

@@ -12,12 +12,15 @@ class HospitalSignUp1 extends StatefulWidget {
 }
 
 class _HospitalSignUp1State extends State<HospitalSignUp1> {
-  String state = "s1", district = "abc", city = "abc";
+  String hospitalName = '';
+  String hospitalAddress = '';
+  String hospitalPhoneNumber = '';
+  String hospitalEmail = '';
+  int hospitalPincode = 000000;
   final formkey = GlobalKey<FormState>();
-  String? countryValue = "";
-  String? stateValue = "";
-  String? cityValue = "";
-  String address = "";
+  String countryValue = "";
+  String stateValue = "";
+  String cityValue = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,6 +68,9 @@ class _HospitalSignUp1State extends State<HospitalSignUp1> {
                 child: SizedBox(
                   width: 300,
                   child: TextFormField(
+                    onSaved: (newValue) {
+                      hospitalName = newValue!;
+                    },
                     decoration: const InputDecoration(
                         contentPadding:
                             EdgeInsets.symmetric(vertical: 4, horizontal: 4),
@@ -88,27 +94,6 @@ class _HospitalSignUp1State extends State<HospitalSignUp1> {
               const SizedBox(
                 height: 30,
               ),
-              // Expanded(
-              //   child: Row(
-              //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //       children: [
-              // Container(
-              //   padding: const EdgeInsets.symmetric(horizontal: 10),
-              //   color: Colors.white,
-              //   child: DropdownButton<String>(
-              //       value: state,
-              //       icon: const Icon(
-              //         Icons.arrow_drop_down,
-              //         color: Colors.black,
-              //         size: 16,
-              //       ),
-              //       onChanged: (String? selectedState) {
-              //         setState(() {
-              //           state = selectedState!;
-              //         });
-              //       },
-              //       items: Constants.states),
-              // ),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: CSCPicker(
@@ -147,7 +132,7 @@ class _HospitalSignUp1State extends State<HospitalSignUp1> {
                   onStateChanged: (value) {
                     setState(() {
                       ///store value in state variable
-                      stateValue = value;
+                      stateValue = value!;
                     });
                   },
 
@@ -155,7 +140,7 @@ class _HospitalSignUp1State extends State<HospitalSignUp1> {
                   onCityChanged: (value) {
                     setState(() {
                       ///store value in city variable
-                      cityValue = value;
+                      cityValue = value!;
                     });
                   },
                 ),
@@ -169,6 +154,9 @@ class _HospitalSignUp1State extends State<HospitalSignUp1> {
                 child: SizedBox(
                   width: 300,
                   child: TextFormField(
+                    onSaved: (newValue) {
+                      hospitalAddress = newValue!;
+                    },
                     maxLines: 3,
                     minLines: 2,
                     decoration: const InputDecoration(
@@ -205,6 +193,10 @@ class _HospitalSignUp1State extends State<HospitalSignUp1> {
                       child: SizedBox(
                         width: 80,
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
+                          onSaved: (newValue) {
+                            hospitalPincode = int.parse(newValue!);
+                          },
                           decoration: const InputDecoration(
                               contentPadding: EdgeInsets.symmetric(
                                   vertical: 4, horizontal: 4),
@@ -239,6 +231,9 @@ class _HospitalSignUp1State extends State<HospitalSignUp1> {
                   child: SizedBox(
                     width: 300,
                     child: TextFormField(
+                      onSaved: (newValue) {
+                        hospitalPhoneNumber = newValue!;
+                      },
                       decoration: const InputDecoration(
                           contentPadding:
                               EdgeInsets.symmetric(vertical: 4, horizontal: 4),
@@ -271,6 +266,9 @@ class _HospitalSignUp1State extends State<HospitalSignUp1> {
                   child: SizedBox(
                     width: 300,
                     child: TextFormField(
+                      onSaved: (newValue) {
+                        hospitalEmail = newValue!;
+                      },
                       decoration: const InputDecoration(
                           contentPadding:
                               EdgeInsets.symmetric(vertical: 4, horizontal: 4),
@@ -297,7 +295,17 @@ class _HospitalSignUp1State extends State<HospitalSignUp1> {
                   borderRadius: BorderRadius.circular(25),
                   onTap: () {
                     if (formkey.currentState!.validate()) {
-                      nextScreen(context, const HospitalSignUp2());
+                      nextScreen(
+                          context,
+                          HospitalSignUp2(
+                            hospitalEmail: hospitalEmail,
+                              hospitalName: hospitalName,
+                              hospitalAddress: hospitalAddress,
+                              hospitalPhoneNumber: hospitalPhoneNumber,
+                              hospitalPincode: hospitalPincode,
+                              cityValue: cityValue,
+                              stateValue: stateValue,
+                              countryValue: countryValue));
                     }
                   },
                   child: Container(

@@ -1,23 +1,72 @@
-
+import 'package:counting_lives/pages/Hospital/Services/DatabaseService.dart';
 import 'package:counting_lives/pages/Hospital/hospitalSignUp3.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../Constants/constants.dart';
 import '../../Helper/HelperFunctions.dart';
 
 class HospitalSignUp2 extends StatefulWidget {
-  const HospitalSignUp2({super.key});
+  final String hospitalName;
+  final String hospitalAddress;
+  final String hospitalPhoneNumber;
+  final int hospitalPincode;
+  final String countryValue;
+  final String stateValue;
+  final String hospitalEmail;
+  final String cityValue;
+  const HospitalSignUp2(
+      {super.key,
+      required this.hospitalName,
+      required this.hospitalAddress,
+      required this.hospitalPhoneNumber,
+      required this.hospitalPincode,
+      required this.countryValue,
+      required this.stateValue,
+      required this.cityValue,
+      required this.hospitalEmail});
 
   @override
   State<HospitalSignUp2> createState() => _HospitalSignUp2State();
 }
 
+final _firebase = FirebaseAuth.instance;
+
 class _HospitalSignUp2State extends State<HospitalSignUp2> {
   bool passwordVisible = false;
+  String hospitalPassword = '';
+  final formkey = GlobalKey<FormState>();
   @override
   void initState() {
     super.initState();
     passwordVisible = true;
+  }
+
+  void _onNext() async {
+    bool isValid = formkey.currentState!.validate();
+    if (isValid) {
+      formkey.currentState!.save();
+
+      try {
+        final userCredentials = await _firebase.createUserWithEmailAndPassword(
+            email: widget.hospitalEmail, password: hospitalPassword);
+        print(userCredentials.user!.uid);
+        DatabaseService(userCredentials.user!.uid).addHospitalData(
+            widget.hospitalName,
+            widget.hospitalAddress,
+            widget.hospitalPhoneNumber,
+            widget.hospitalPincode,
+            widget.countryValue,
+            widget.stateValue,
+            widget.hospitalEmail,
+            widget.cityValue);
+      } on FirebaseAuthException catch (error) {
+        ScaffoldMessenger.of(context).clearSnackBars();
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(error.message ?? "Authentication Failed")));
+      }
+      nextScreenReplace(context, HospitalSignUp3());
+    }
   }
 
   @override
@@ -128,11 +177,7 @@ class _HospitalSignUp2State extends State<HospitalSignUp2> {
                           );
                         },
                       ),
-                      // alignLabelWithHint: false,
-                      // filled: true,
                     ),
-                    // keyboardType: TextInputType.visiblePassword,
-                    // textInputAction: TextInputAction.done,
                   ),
                 ),
               ),
@@ -145,9 +190,12 @@ class _HospitalSignUp2State extends State<HospitalSignUp2> {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: const SizedBox(
+                child: SizedBox(
                   width: 300,
-                  child: TextField(
+                  child: TextFormField(
+                    onSaved: (newValue) {
+                      hospitalPassword = newValue!;
+                    },
                     obscureText: true,
                     decoration: InputDecoration(
                       contentPadding:
@@ -155,12 +203,7 @@ class _HospitalSignUp2State extends State<HospitalSignUp2> {
                       hintText: "Password",
                       labelText: "Confirm Password",
                       labelStyle: TextStyle(color: Constants.pink2),
-
-                      // alignLabelWithHint: false,
-                      // filled: true,
                     ),
-                    // keyboardType: TextInputType.visiblePassword,
-                    // textInputAction: TextInputAction.done,
                   ),
                 ),
               ),
