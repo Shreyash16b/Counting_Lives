@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.counting_lives.app-mergeDebugResources-14:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.example.counting_lives_shreyash.app-mergeDebugResources-14:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Areeb\\Desktop\\VS\\flutter_projects\\areeb_s_application2\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\Users\\LENOVO\\Desktop\\counting_lives_shreyash\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
