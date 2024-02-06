@@ -1,4 +1,4 @@
-com.example.counting_lives
+com.example.counting_lives_shreyash
 attr activityAction
 attr activityName
 attr alpha
