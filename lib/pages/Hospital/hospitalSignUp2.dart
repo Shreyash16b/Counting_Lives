@@ -35,6 +35,7 @@ final _firebase = FirebaseAuth.instance;
 class _HospitalSignUp2State extends State<HospitalSignUp2> {
   bool passwordVisible = false;
   String hospitalPassword = '';
+  String? hid;
   final formkey = GlobalKey<FormState>();
   @override
   void initState() {
@@ -60,12 +61,13 @@ class _HospitalSignUp2State extends State<HospitalSignUp2> {
             widget.stateValue,
             widget.hospitalEmail,
             widget.cityValue);
+        nextScreenReplace(
+            context, HospitalSignUp3(hid: userCredentials.user!.uid));
       } on FirebaseAuthException catch (error) {
         ScaffoldMessenger.of(context).clearSnackBars();
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(error.message ?? "Authentication Failed")));
       }
-      nextScreenReplace(context, HospitalSignUp3());
     }
   }
 
@@ -215,7 +217,7 @@ class _HospitalSignUp2State extends State<HospitalSignUp2> {
                 child: InkWell(
                   borderRadius: BorderRadius.circular(25),
                   onTap: () {
-                    nextScreen(context, const HospitalSignUp3());
+                    _onNext();
                   },
                   child: Container(
                     width: 150,
