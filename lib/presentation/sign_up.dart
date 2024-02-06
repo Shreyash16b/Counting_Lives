@@ -31,13 +31,14 @@ class _SignUpFormState extends State<SignUpForm> {
     if (checkBoxValue == true && isValid) {
       _form.currentState!.save();
 
-      try{
+      try {
         final userCredentials = await _firebase.createUserWithEmailAndPassword(
-          email: _userEmail, password: _userPassword);
+            email: _userEmail, password: _userPassword);
         print(userCredentials.user!.uid);
-      } on FirebaseAuthException catch(error){
+      } on FirebaseAuthException catch (error) {
         ScaffoldMessenger.of(context).clearSnackBars();
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.message ?? "Authentication Failed")));
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(error.message ?? "Authentication Failed")));
       }
       Navigator.of(context).push(
         MaterialPageRoute(

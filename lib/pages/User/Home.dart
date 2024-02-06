@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../Constants/constants.dart';
@@ -22,7 +21,12 @@ class _UserHomeState extends State<UserHome> {
   ];
 
   List services = ["Surgical", "Ambulance", "Pathology", "CT Scan"];
-  List servicesIcons = [];
+  List servicesIcons = [
+    "assets/images/medical-mask.png",
+    "assets/images/ambulance.png",
+    "assets/images/pathology.png",
+    "assets/images/ct-scan.png"
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -136,7 +140,8 @@ class _UserHomeState extends State<UserHome> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Image.asset(
-                                        "assets/images/",
+                                        servicesIcons[index],
+                                        height: 80,
                                       ),
                                       Text(
                                         services[index],
