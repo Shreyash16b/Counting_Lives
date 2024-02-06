@@ -1,3 +1,4 @@
+import 'package:counting_lives/pages/User/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:counting_lives/presentation/services_screen/services_screen.dart';
@@ -124,7 +125,7 @@ class OnboardFinal extends StatelessWidget {
                       onTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (ctx) => ServicesScreen(),
+                            builder: (ctx) => UserHome(),
                           ),
                         );
                       },

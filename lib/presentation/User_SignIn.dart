@@ -1,3 +1,4 @@
+import 'package:counting_lives/pages/User/Home.dart';
 import 'package:counting_lives/presentation/sign_up.dart';
 import 'package:flutter/material.dart';
 
@@ -138,7 +139,13 @@ class _User_SignInState extends State<User_SignIn> {
                   borderRadius: BorderRadius.circular(25),
                   child: InkWell(
                     borderRadius: BorderRadius.circular(25),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => UserHome(),
+                        ),
+                      );
+                    },
                     child: Container(
                       width: 150,
                       height: 50,
