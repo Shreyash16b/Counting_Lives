@@ -42,7 +42,7 @@ class ServiceProfilePageState extends State<ServiceProfilePage>
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 26.h),
+          padding: EdgeInsets.symmetric(horizontal: 16.h),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,7 +74,7 @@ class ServiceProfilePageState extends State<ServiceProfilePage>
                 ],
               ),
               CustomElevatedButton(
-                onPressed: (){},
+                onPressed: () {},
                 height: 30.v,
                 width: 90.h,
                 text: "Open",

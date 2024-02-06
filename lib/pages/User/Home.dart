@@ -1,8 +1,11 @@
+import 'package:counting_lives/Helper/HelperFunctions.dart';
+import 'package:counting_lives/presentation/service_profile_page/service_profile_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../Constants/constants.dart';
 import '../../HospitalCard.dart';
 import '../../drawers/userProfileDrawer.dart';
+import '../../presentation/service_profile_tab_container_screen/service_profile_tab_container_screen.dart';
 
 class UserHome extends StatefulWidget {
   const UserHome({super.key});
@@ -167,12 +170,18 @@ class _UserHomeState extends State<UserHome> {
                       child: ListView.builder(
                           itemCount: 9,
                           itemBuilder: (context, index) {
-                            return const HospitalCard(
-                                hospitalName: "hospitalName",
-                                fromTime: TimeOfDay(hour: 10, minute: 0),
-                                toTime: TimeOfDay(hour: 10, minute: 0),
-                                hospitalAddress: "hospitalAddress",
-                                service: "service");
+                            return GestureDetector(
+                              onTap: () {
+                                nextScreen(context,
+                                    ServiceProfileTabContainerScreen());
+                              },
+                              child: const HospitalCard(
+                                  hospitalName: "hospitalName",
+                                  fromTime: TimeOfDay(hour: 10, minute: 0),
+                                  toTime: TimeOfDay(hour: 10, minute: 0),
+                                  hospitalAddress: "hospitalAddress",
+                                  service: "service"),
+                            );
                           }),
                     )
                   ],

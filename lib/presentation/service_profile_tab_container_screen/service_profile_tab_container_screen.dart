@@ -29,7 +29,7 @@ class ServiceProfileTabContainerScreenState
   @override
   void initState() {
     super.initState();
-    tabviewController = TabController(length: 4, vsync: this);
+    tabviewController = TabController(length: 3, vsync: this);
   }
 
   @override
