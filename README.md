@@ -24,6 +24,22 @@ The Doctor Appointment App is a super handy mobile app that lets you easily sche
 - Dart
 ### Back-end
 - Firebase
+
+### Database
+
+
+### Computer Vision
+
+### Progress
+
+### Future Scope 
+
+### Applications
+
+### Project Setup
+
+### Usage
+
 ### Team Members
 
 - Shreyash Borde :
