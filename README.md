@@ -3,7 +3,7 @@
 ### Description 
 The Doctor Appointment App is a super handy mobile app that lets you easily schedule appointments with healthcare professionals. It's all about making your life easier when it comes to finding and booking appointments with doctors, specialists, and other healthcare providers. You can search for healthcare providers based on their location, specialty, and availability. Once you find a suitable provider, you can check out their profile, which includes their name, photo, contact info, specialization, education, certifications, years of experience, and even the languages they speak. With just a few taps, you can secure your appointment and have peace of mind knowing that you're all set to see the right healthcare professional. It's like having a personal assistant for your medical needs right in your pocket!
 
-#### Features
+### Features
 **1. Search and Book Appointments:**
    - Users can search for healthcare providers based on location, specialty, and availability.
    - The app displays a list of doctors, clinics, and hospitalsalong with their available time slots.
