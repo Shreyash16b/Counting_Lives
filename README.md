@@ -1,59 +1,38 @@
 
 # counting_lives
-### Table of contents
-- [System requirements](#system-requirements)
-- [Figma design guidelines for better UI accuracy](#figma-design-guideline-for-better-accuracy)
-- [Check the UI of the entire app](#app-navigations)
-- [Application structure](#project-structure)
-- [How to format your code?](#how-you-can-do-code-formatting)
-- [How you can improve code readability?](#how-you-can-improve-the-readability-of-code)
-- [Libraries and tools used](#libraries-and-tools-used)
-- [Support](#support)
+### Description 
+The Doctor Appointment App is a super handy mobile app that lets you easily schedule appointments with healthcare professionals. It's all about making your life easier when it comes to finding and booking appointments with doctors, specialists, and other healthcare providers. You can search for healthcare providers based on their location, specialty, and availability. Once you find a suitable provider, you can check out their profile, which includes their name, photo, contact info, specialization, education, certifications, years of experience, and even the languages they speak. With just a few taps, you can secure your appointment and have peace of mind knowing that you're all set to see the right healthcare professional. It's like having a personal assistant for your medical needs right in your pocket!
 
-### System requirements
+### Links
 
-Dart SDK Version 2.18.0 or greater.
-Flutter SDK Version 3.3.0 or greater.
+- https://github.com/Shreyash16b/Counting_Lives.git
+- https://www.figma.com/file/7CcAPTvrPWjJUjCUfoHSdS/Doctor-App-v1.0?type=design&node-id=3%3A1002&mode=design&t=aF1VZ0cowwDAu5DU-1
 
-### Figma design guidelines for better UI accuracy
+### Tech-Stack
 
-Read our guidelines to increase the accuracy of design-to-code conversion by optimizing Figma designs.
-https://docs.dhiwise.com/docs/Designguidelines/intro
+- get - State management
+  https://pub.dev/packages/get
+- connectivity_plus - For status of network connectivity
+  https://pub.dev/packages/connectivity_plus
+- shared_preferences - Provide persistent storage for simple data
+  https://pub.dev/packages/shared_preferences
+- cached_network_image - For storing internet image into cache
+  https://pub.dev/packages/cached_network_image
 
-### Check the UI of the entire app
+### Front-end
+- Flutter
+- Dart
+### Back-end
+- Firebase
+### Team Members
 
-Check the UI of all the app screens from a single place by setting up the 'initialRoute'  to AppNavigation in the AppRoutes.dart file.
+- Shreyash Borde :
+- Areeb Kounchali : aahkounchali_b22@ce.vjti.ac.in
+- Sayali Khandare : sckhandare_b22@it.vjti.ac.in
+- Ojasvi Sonone : ossonone_b22@ee.vjti.ac.in
 
-### Application structure
-After successful build, your application structure should look like this:
-                    
-```
-.
-├── android                         - It contains files required to run the application on an Android platform.
-├── assets                          - It contains all images and fonts of your application.
-├── ios                             - It contains files required to run the application on an iOS platform.
-├── lib                             - Most important folder in the application, used to write most of the Dart code..
-    ├── main.dart                   - Starting point of the application
-    ├── core
-    │   ├── app_export.dart         - It contains commonly used file imports
-    │   ├── constants               - It contains static constant class file
-    │   └── utils                   - It contains common files and utilities of the application
-    ├── presentation                - It contains widgets of the screens
-    ├── routes                      - It contains all the routes of the application
-    └── theme                       - It contains app theme and decoration classes
-    └── widgets                     - It contains all custom widget classes
-```
-### How to format your code?
+### Mentors
+- Rushi Jain :
+- Akshay :
 
-- if your code is not formatted then run following command in your terminal to format code
-  ```
-  dart format .
-  ```
-
-### How you can improve code readability?
-
-Resolve the errors and warnings that are shown in the application.
-
-### Support
-
-If you have any problems or questions, go to our Discord channel, where we will help you as quickly as possible: https://discord.com/invite/rFMnCG5MZ7
+### Screenshots
