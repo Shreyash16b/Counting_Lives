@@ -68,6 +68,10 @@ Overall, a doctor appointment app serves as a one-stop solution for individuals 
 ### Computer Vision
 
 ### Progress
+# Fully Implemented Features
+
+# Partially Implemented Features
+
 
 ### Future Scope 
 
