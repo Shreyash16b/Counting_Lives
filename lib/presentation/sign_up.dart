@@ -40,19 +40,24 @@ class _SignUpFormState extends State<SignUpForm> {
             .doc(userCredentials.user!.uid)
             .set({
               'email': _userEmail,
-              'phoneNumber': _userPhone
+              'phoneNumber': _userPhone,
+              'name' : null,
+              'height' : null,
+              'weight' : null,
+              'dob' : null,
+              'gender' : null,
               });
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (ctx) => SignUpSuccess(uid: userCredentials.user!.uid),
+        ),
+      );
         print(userCredentials.user!.uid);
       } on FirebaseAuthException catch (error) {
         ScaffoldMessenger.of(context).clearSnackBars();
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(error.message ?? "Authentication Failed")));
       }
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (ctx) => SignUpSuccess(),
-        ),
-      );
     }
   }
 

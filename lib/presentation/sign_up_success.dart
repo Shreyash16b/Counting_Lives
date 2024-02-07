@@ -2,7 +2,8 @@ import 'package:counting_lives/presentation/info_form_1.dart';
 import 'package:flutter/material.dart';
 
 class SignUpSuccess extends StatefulWidget {
-  const SignUpSuccess({super.key});
+  final String uid;
+  const SignUpSuccess({super.key, required this.uid});
 
   @override
   State<SignUpSuccess> createState() => _SignUpSuccessState();
@@ -151,7 +152,7 @@ class _SignUpSuccessState extends State<SignUpSuccess> {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (ctx) => InfoForm1(),
+                          builder: (ctx) => InfoForm1(uid: widget.uid),
                         ),
                       );
                     },
