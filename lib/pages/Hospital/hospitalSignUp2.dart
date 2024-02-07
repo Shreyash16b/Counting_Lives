@@ -36,7 +36,7 @@ class _HospitalSignUp2State extends State<HospitalSignUp2> {
   bool passwordVisible = false;
   String hospitalPassword = '';
   String? hid;
-  final formkey = GlobalKey<FormState>();
+  final _formkey2 = GlobalKey<FormState>();
   @override
   void initState() {
     super.initState();
@@ -44,13 +44,13 @@ class _HospitalSignUp2State extends State<HospitalSignUp2> {
   }
 
   void _onNext() async {
-    bool isValid = formkey.currentState!.validate();
+    bool isValid = _formkey2.currentState!.validate();
     if (isValid) {
-      formkey.currentState!.save();
-
+      _formkey2.currentState!.save();
+      print(hospitalPassword);
       try {
         final userCredentials = await _firebase.createUserWithEmailAndPassword(
-            email: widget.hospitalEmail, password: hospitalPassword);
+            email: widget.hospitalEmail.toString(), password: hospitalPassword);
         print(userCredentials.user!.uid);
         DatabaseService(userCredentials.user!.uid).addHospitalData(
             widget.hospitalName,
@@ -102,144 +102,147 @@ class _HospitalSignUp2State extends State<HospitalSignUp2> {
                 ],
               ),
             ),
-            child: Column(children: [
-              const SizedBox(
-                height: 40,
-              ),
-              Container(
-                padding: const EdgeInsets.only(left: 10),
-                width: MediaQuery.of(context).size.width * 0.8,
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(5),
-                    color: Colors.white),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text("Government Certificate"),
-                    Container(
-                      // padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 8,
-                          color: Colors.white,
-                        ),
-                        borderRadius: BorderRadius.circular(5),
-                        gradient: const LinearGradient(
-                            colors: [Constants.pink1, Constants.pink2],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight),
-                      ),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.transparent,
-                          shadowColor: Colors.transparent,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                        ),
-                        child: const Text(
-                          "Upload",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ],
+            child: Form(
+              key: _formkey2,
+              child: Column(children: [
+                const SizedBox(
+                  height: 40,
                 ),
-              ),
-              const SizedBox(
-                height: 35,
-              ),
-              Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
+                // Container(
+                //   padding: const EdgeInsets.only(left: 10),
+                //   width: MediaQuery.of(context).size.width * 0.8,
+                //   decoration: BoxDecoration(
+                //       border: Border.all(color: Colors.black),
+                //       borderRadius: BorderRadius.circular(5),
+                //       color: Colors.white),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //     children: [
+                //       const Text("Government Certificate"),
+                //       Container(
+                //         // padding: const EdgeInsets.all(10),
+                //         decoration: BoxDecoration(
+                //           border: Border.all(
+                //             width: 8,
+                //             color: Colors.white,
+                //           ),
+                //           borderRadius: BorderRadius.circular(5),
+                //           gradient: const LinearGradient(
+                //               colors: [Constants.pink1, Constants.pink2],
+                //               begin: Alignment.topLeft,
+                //               end: Alignment.bottomRight),
+                //         ),
+                //         child: ElevatedButton(
+                //           onPressed: () {},
+                //           style: ElevatedButton.styleFrom(
+                //             backgroundColor: Colors.transparent,
+                //             shadowColor: Colors.transparent,
+                //             shape: RoundedRectangleBorder(
+                //               borderRadius: BorderRadius.circular(5),
+                //             ),
+                //           ),
+                //           child: const Text(
+                //             "Upload",
+                //             style: TextStyle(color: Colors.white),
+                //           ),
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                const SizedBox(
+                  height: 35,
                 ),
-                child: SizedBox(
-                  width: 300,
-                  child: TextField(
-                    obscureText: passwordVisible,
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(
-                          vertical: 4, horizontal: 4),
-                      hintText: "Password",
-                      labelText: "Enter Password",
-                      labelStyle: const TextStyle(color: Constants.pink2),
-                      suffixIcon: IconButton(
-                        icon: Icon(passwordVisible
-                            ? Icons.visibility_off
-                            : Icons.visibility),
-                        onPressed: () {
-                          setState(
-                            () {
-                              passwordVisible = !passwordVisible;
-                            },
-                          );
-                        },
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: SizedBox(
+                    width: 300,
+                    child: TextField(
+                      obscureText: passwordVisible,
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 4, horizontal: 4),
+                        hintText: "Password",
+                        labelText: "Enter Password",
+                        labelStyle: const TextStyle(color: Constants.pink2),
+                        suffixIcon: IconButton(
+                          icon: Icon(passwordVisible
+                              ? Icons.visibility_off
+                              : Icons.visibility),
+                          onPressed: () {
+                            setState(
+                              () {
+                                passwordVisible = !passwordVisible;
+                              },
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
+                const SizedBox(
+                  height: 30,
                 ),
-                child: SizedBox(
-                  width: 300,
-                  child: TextFormField(
-                    onSaved: (newValue) {
-                      hospitalPassword = newValue!;
-                    },
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      contentPadding:
-                          EdgeInsets.symmetric(vertical: 4, horizontal: 4),
-                      hintText: "Password",
-                      labelText: "Confirm Password",
-                      labelStyle: TextStyle(color: Constants.pink2),
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: SizedBox(
+                    width: 300,
+                    child: TextFormField(
+                      onSaved: (newValue) {
+                        hospitalPassword = newValue!;
+                      },
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        contentPadding:
+                            EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+                        hintText: "Password",
+                        labelText: "Confirm Password",
+                        labelStyle: TextStyle(color: Constants.pink2),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Material(
-                borderRadius: BorderRadius.circular(25),
-                child: InkWell(
+                const SizedBox(
+                  height: 30,
+                ),
+                Material(
                   borderRadius: BorderRadius.circular(25),
-                  onTap: () {
-                    _onNext();
-                  },
-                  child: Container(
-                    width: 150,
-                    height: 50,
-                    alignment: Alignment.center,
-                    child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            "Next",
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(175, 255, 85, 85)),
-                          ),
-                          Icon(Icons.arrow_forward_outlined,
-                              color: Color.fromARGB(175, 255, 85, 85))
-                        ]),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(25),
+                    onTap: () {
+                      _onNext();
+                    },
+                    child: Container(
+                      width: 150,
+                      height: 50,
+                      alignment: Alignment.center,
+                      child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              "Next",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(175, 255, 85, 85)),
+                            ),
+                            Icon(Icons.arrow_forward_outlined,
+                                color: Color.fromARGB(175, 255, 85, 85))
+                          ]),
+                    ),
                   ),
                 ),
-              ),
-            ]),
+              ]),
+            ),
           ),
         ]),
       ),

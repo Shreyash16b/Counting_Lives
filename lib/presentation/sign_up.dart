@@ -2,7 +2,8 @@ import 'package:counting_lives/presentation/sign_up_otp.dart';
 import 'package:counting_lives/presentation/sign_up_success.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 final _firebase = FirebaseAuth.instance;
 
@@ -34,6 +35,13 @@ class _SignUpFormState extends State<SignUpForm> {
       try {
         final userCredentials = await _firebase.createUserWithEmailAndPassword(
             email: _userEmail, password: _userPassword);
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(userCredentials.user!.uid)
+            .set({
+              'email': _userEmail,
+              'phoneNumber': _userPhone
+              });
         print(userCredentials.user!.uid);
       } on FirebaseAuthException catch (error) {
         ScaffoldMessenger.of(context).clearSnackBars();

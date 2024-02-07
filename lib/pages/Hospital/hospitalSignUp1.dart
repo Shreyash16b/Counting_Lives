@@ -17,10 +17,10 @@ class _HospitalSignUp1State extends State<HospitalSignUp1> {
   String hospitalPhoneNumber = '';
   String hospitalEmail = '';
   int hospitalPincode = 000000;
-  final formkey = GlobalKey<FormState>();
+  final _formkey1 = GlobalKey<FormState>();
   String countryValue = "";
-  String stateValue = "";
-  String cityValue = "";
+  String? stateValue = "";
+  String? cityValue = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +49,7 @@ class _HospitalSignUp1State extends State<HospitalSignUp1> {
             ),
           ),
           child: Form(
-            key: formkey,
+            key: _formkey1,
             child: Column(children: [
               const SizedBox(
                 height: 30,
@@ -97,6 +97,7 @@ class _HospitalSignUp1State extends State<HospitalSignUp1> {
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: CSCPicker(
+                  
                   showStates: true,
 
                   /// Enable disable city drop down [OPTIONAL PARAMETER]
@@ -132,7 +133,7 @@ class _HospitalSignUp1State extends State<HospitalSignUp1> {
                   onStateChanged: (value) {
                     setState(() {
                       ///store value in state variable
-                      stateValue = value!;
+                      stateValue = value;
                     });
                   },
 
@@ -140,7 +141,7 @@ class _HospitalSignUp1State extends State<HospitalSignUp1> {
                   onCityChanged: (value) {
                     setState(() {
                       ///store value in city variable
-                      cityValue = value!;
+                      cityValue = value;
                     });
                   },
                 ),
@@ -294,7 +295,8 @@ class _HospitalSignUp1State extends State<HospitalSignUp1> {
                 child: InkWell(
                   borderRadius: BorderRadius.circular(25),
                   onTap: () {
-                    if (formkey.currentState!.validate()) {
+                    if (_formkey1.currentState!.validate()) {
+                      _formkey1.currentState!.save();
                       nextScreen(
                           context,
                           HospitalSignUp2(
@@ -303,8 +305,8 @@ class _HospitalSignUp1State extends State<HospitalSignUp1> {
                               hospitalAddress: hospitalAddress,
                               hospitalPhoneNumber: hospitalPhoneNumber,
                               hospitalPincode: hospitalPincode,
-                              cityValue: cityValue,
-                              stateValue: stateValue,
+                              cityValue: cityValue!,
+                              stateValue: stateValue!,
                               countryValue: countryValue));
                     }
                   },

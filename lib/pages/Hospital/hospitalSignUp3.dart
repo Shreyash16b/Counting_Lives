@@ -1,6 +1,8 @@
+import 'package:counting_lives/pages/Hospital/Services/DatabaseService.dart';
+import 'package:counting_lives/pages/Hospital/hospitalUpcomingAppointment.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
+import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import '../../Constants/constants.dart';
 import '../../DoctorCard.dart';
 import '../../Helper/HelperFunctions.dart';
@@ -16,6 +18,13 @@ class HospitalSignUp3 extends StatefulWidget {
 
 class _HospitalSignUp3State extends State<HospitalSignUp3> {
   final formkey = GlobalKey<FormState>();
+  List servicesChecked = [];
+  bool _mri = false;
+  bool _ct = false;
+  bool _twod = false;
+  bool _sonography = false;
+  bool _xray = false;
+  bool _doppler = false;
   String? fromDay = 'Monday';
   String? toDay = 'Saturday';
   TimeOfDay? fromTime;
@@ -24,19 +33,19 @@ class _HospitalSignUp3State extends State<HospitalSignUp3> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 40,
-          ),
-          Image.asset("assets/images/Counting_lives.png"),
-          const SizedBox(
-            height: 20,
-          ),
-          Container(
+        body: Column(
+      children: [
+        const SizedBox(
+          height: 40,
+        ),
+        Image.asset("assets/images/Counting_lives.png"),
+        const SizedBox(
+          height: 20,
+        ),
+        Expanded(
+          child: Container(
             padding: const EdgeInsets.all(10),
-            height: 750,
+            // height: 750,
             width: MediaQuery.of(context).size.width,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -53,17 +62,20 @@ class _HospitalSignUp3State extends State<HospitalSignUp3> {
             child: Form(
               key: formkey,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(
-                    height: 20,
+                    height: 70,
                   ),
                   const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      "Working Days ",
+                      "Working Days: ",
                       textAlign: TextAlign.start,
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                   const SizedBox(
@@ -136,9 +148,12 @@ class _HospitalSignUp3State extends State<HospitalSignUp3> {
                   const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      "Working Time ",
+                      "Working Time: ",
                       textAlign: TextAlign.start,
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                   const SizedBox(
@@ -207,69 +222,127 @@ class _HospitalSignUp3State extends State<HospitalSignUp3> {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  const Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Add Doctors",
-                      textAlign: TextAlign.start,
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(5),
-                    width: MediaQuery.of(context).size.width * 0.6,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: Colors.black, width: 2),
-                    ),
-                    child: TextField(
-                      scrollPadding: EdgeInsets.zero,
-                      controller: searchController,
-                      style: const TextStyle(color: Constants.pink1),
-                      decoration: InputDecoration(
-                        hintText: "Search",
-                        border: InputBorder.none,
-                        hintStyle: TextStyle(
-                            color: Constants.pink1.withOpacity(0.7),
-                            fontSize: 16),
+                  const SizedBox(height: 10,),
+                  CustomCheckBoxGroup(
+                    // autoWidth: true,
+                    buttonTextStyle: ButtonTextStyle(
+                      selectedColor: Colors.red,
+                      unSelectedColor: Colors.orange,
+                      textStyle: TextStyle(
+                        fontSize: 16,
+                      ),
+                      selectedTextStyle: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
+                    unSelectedColor: Theme.of(context).canvasColor,
+                    buttonLables: [
+                      "X-Ray",
+                      "CT Scan",
+                      "2D",
+                      "Sonography",
+                      "Doppler",
+                      "MRI",
+                    ],
+                    buttonValuesList: [
+                      "X-Ray",
+                      "CT Scan",
+                      "2D",
+                      "Sonography",
+                      "Doppler",
+                      "MRI",
+                    ],
+                    checkBoxButtonValues: (values) {
+                      servicesChecked = values;
+                      print(servicesChecked);
+                    },
+                    spacing: 0,
+                    defaultSelected: [],
+                    horizontal: false,
+                    enableButtonWrap: true,
+                    width: 150,
+                    absoluteZeroSpacing: false,
+                    selectedColor: Colors.green,
+                    padding: 10, 
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Expanded(
-                    child: Container(
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            topRight: Radius.circular(30),
-                          ),
-                          color: Colors.white),
-                      child: ListView.builder(
-                        itemCount: 5,
-                        itemBuilder: ((context, index) {
-                          return const DoctorCard(
-                              doctorName: "doctorName",
-                              dorctorAddress: "doctorAddress",
-                              doctorFromTime: TimeOfDay(hour: 10, minute: 0),
-                              doctorToTime: TimeOfDay(hour: 10, minute: 30));
-                        }),
-                      ),
-                    ),
-                  ),
+                  // const SizedBox(
+                  //   height: 30,
+                  // ),
+                  // const Align(
+                  //   alignment: Alignment.topLeft,
+                  //   child: Text(
+                  //     "Add Doctors",
+                  //     textAlign: TextAlign.start,
+                  //     style: TextStyle(color: Colors.white, fontSize: 20),
+                  //   ),
+                  // ),
+                  // Container(
+                  //   padding: const EdgeInsets.all(5),
+                  //   width: MediaQuery.of(context).size.width * 0.6,
+                  //   decoration: BoxDecoration(
+                  //     color: Colors.white,
+                  //     borderRadius: BorderRadius.circular(20),
+                  //     border: Border.all(color: Colors.black, width: 2),
+                  //   ),
+                  //   child: TextField(
+                  //     scrollPadding: EdgeInsets.zero,
+                  //     controller: searchController,
+                  //     style: const TextStyle(color: Constants.pink1),
+                  //     decoration: InputDecoration(
+                  //       hintText: "Search",
+                  //       border: InputBorder.none,
+                  //       hintStyle: TextStyle(
+                  //           color: Constants.pink1.withOpacity(0.7),
+                  //           fontSize: 16),
+                  //     ),
+                  //   ),
+                  // ),
+                  // const SizedBox(
+                  //   height: 20,
+                  // ),
+                  // Expanded(
+                  //   child: Container(
+                  //     decoration: const BoxDecoration(
+                  //         borderRadius: BorderRadius.only(
+                  //           topLeft: Radius.circular(30),
+                  //           topRight: Radius.circular(30),
+                  //         ),
+                  //         color: Colors.white),
+                  //     child: ListView.builder(
+                  //       itemCount: 5,
+                  //       itemBuilder: ((context, index) {
+                  //         return const DoctorCard(
+                  //             doctorName: "doctorName",
+                  //             dorctorAddress: "doctorAddress",
+                  //             doctorFromTime: TimeOfDay(hour: 10, minute: 0),
+                  //             doctorToTime: TimeOfDay(hour: 10, minute: 30));
+                  //       }),
+                  //     ),
+                  //   ),
+                  // ),
                   const SizedBox(height: 20),
                   Material(
                     borderRadius: BorderRadius.circular(25),
                     child: InkWell(
                       borderRadius: BorderRadius.circular(25),
-                      onTap: () {
-                        nextScreen(context, const HospitalSignUp4());
+                      onTap: () async {
+
+                        await DatabaseService(widget.hid).addHospitalDayTimeService(
+                          fromDay.toString(),
+                          toDay.toString(),
+                          fromTime!.format(context),
+                          toTime!.format(context),
+                          servicesChecked.contains("X-Ray"),
+                          servicesChecked.contains("CT Scan"),
+                          servicesChecked.contains("MRI"),
+                          servicesChecked.contains("Sonography"),
+                          servicesChecked.contains("2D"),
+                          servicesChecked.contains("Doppler"),
+                        );
+                        nextScreen(context, HospitalUpcomingAppointments(upcomingAppointments: 3, hospitalId: widget.hid));
                       },
+
                       child: Container(
                         width: 150,
                         height: 50,
@@ -294,8 +367,8 @@ class _HospitalSignUp3State extends State<HospitalSignUp3> {
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     ));
   }
 }

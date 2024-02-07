@@ -71,43 +71,4 @@ class Constants {
       ),
     ),
   ];
-
-  static const states = [
-    DropdownMenuItem(
-      value: 's1',
-      child: Text(
-        "a",
-        style: TextStyle(
-          fontSize: 18,
-        ),
-      ),
-    ),
-    DropdownMenuItem(
-      value: 's2',
-      child: Text(
-        "ab",
-        style: TextStyle(
-          fontSize: 18,
-        ),
-      ),
-    ),
-    DropdownMenuItem(
-      value: 's3',
-      child: Text(
-        "abc",
-        style: TextStyle(
-          fontSize: 18,
-        ),
-      ),
-    ),
-    DropdownMenuItem(
-      value: 's4',
-      child: Text(
-        "abcd",
-        style: TextStyle(
-          fontSize: 18,
-        ),
-      ),
-    ),
-  ];
 }

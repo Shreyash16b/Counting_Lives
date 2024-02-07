@@ -172,13 +172,17 @@ class _HospitalLoginState extends State<HospitalLogin> {
                       borderRadius: BorderRadius.circular(25),
                       child: InkWell(
                         borderRadius: BorderRadius.circular(25),
-                        onTap: () {
+                        onTap: () async {
                           if (formkey.currentState!.validate()) {
+                            formkey.currentState!.save();
+                            final userCredentials = await _firebase.signInWithEmailAndPassword(
+                                email: hospitalEmail,
+                                password: hospitalPassword);
                             nextScreen(
                                 context,
-                                const HospitalUpcomingAppointments(
+                                HospitalUpcomingAppointments(
                                     upcomingAppointments: 3,
-                                    hospitalName: "hospitalName"));
+                                    hospitalId: userCredentials.user!.uid));
                           }
                         },
                         child: Container(
@@ -219,18 +223,13 @@ class _HospitalLoginState extends State<HospitalLogin> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                SizedBox(
-                                  width: 120,
-                                  height: 60,
-                                  child: Text(
-                                    "New Member?  Sign Up",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color:
-                                            Color.fromARGB(175, 255, 85, 85)),
-                                  ),
+                                Text(
+                                  "New Member? \nSign Up",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color.fromARGB(175, 255, 85, 85)),
                                 ),
                                 Icon(Icons.arrow_forward_outlined,
                                     color: Color.fromARGB(175, 255, 85, 85))

@@ -84,10 +84,8 @@ class _User_SignInState extends State<User_SignIn> {
                                 color: Color.fromARGB(174, 51, 51, 51),
                                 fontWeight: FontWeight.w200)),
                         validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Username cannot be empty";
-                          } else if (value.length < 4) {
-                            return "Username must be at least 4 characters long";
+                          if (value!.isEmpty || value.contains("@")) {
+                            return "Email cannot be empty/Enter Proper Email";
                           }
                           return null;
                         },

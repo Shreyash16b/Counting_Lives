@@ -6,11 +6,11 @@ import '../../drawers/hospitalProfileDrawer.dart';
 
 class HospitalUpcomingAppointments extends StatefulWidget {
   final int upcomingAppointments;
-  final String hospitalName;
+  final String hospitalId;
   const HospitalUpcomingAppointments(
       {super.key,
       required this.upcomingAppointments,
-      required this.hospitalName});
+      required this.hospitalId});
 
   @override
   State<HospitalUpcomingAppointments> createState() =>
@@ -22,7 +22,7 @@ class _HospitalUpcomingAppointmentsState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: HospitalProfileDrawer(hospitalName: widget.hospitalName),
+      drawer: HospitalProfileDrawer(hospitalName: widget.hospitalId),
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,

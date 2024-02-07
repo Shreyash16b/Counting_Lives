@@ -58,7 +58,7 @@ class _HospitalProfileDrawerState extends State<HospitalProfileDrawer> {
                           nextScreen(
                               context,
                               HospitalUpcomingAppointments(
-                                  hospitalName: widget.hospitalName,
+                                  hospitalId: widget.hospitalName,
                                   upcomingAppointments: 3));
                         },
                         // leading: Icon(Icons.abc),
