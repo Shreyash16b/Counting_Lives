@@ -90,7 +90,8 @@ Overall, a doctor appointment app serves as a one-stop solution for individuals 
 
 - **Continuous Innovation:** Stay abreast of technological advancements and industry trends to drive ongoing innovation and maintain a competitive edge in the rapidly evolving digital healthcare landscape.
 ### Applications
-
+> To facilitate easy communication between Patient, Hospital and Doctor.
+> Enables to patients to book appointment whenever comfortable without much concern about the queue.
 ### Project Setup
 **Requirements:**
 - Any Operating System (e.g., MacOS X, Linux, Windows)
