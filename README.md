@@ -77,7 +77,8 @@ Overall, a doctor appointment app serves as a one-stop solution for individuals 
 - Any Operating System (e.g., MacOS X, Linux, Windows)
 - Any IDE with Flutter SDK installed (e.g., IntelliJ, Android Studio, VSCode, etc.)
 - A little knowledge of Dart and Flutter
-  1 GB storage
+- 1 GB storage
+
 **Setup:**
 - Clone the GitHub repository into your local device.
 - Open the project folder in your preferred IDE with Flutter SDK installed (e.g., IntelliJ, Android Studio, VSCode, etc.).
