@@ -83,13 +83,13 @@ Overall, a doctor appointment app serves as a one-stop solution for individuals 
 
 ### Team Members
 
-- Shreyash Borde :
+- Shreyash Borde : shreyashborde@gmail.com
 - Areeb Kounchali : aahkounchali_b22@ce.vjti.ac.in
 - Sayali Khandare : sckhandare_b22@it.vjti.ac.in
 - Ojasvi Sonone : ossonone_b22@ee.vjti.ac.in
 
 ### Mentors
-- Rushi Jain :
-- Akshay :
+- Rushi Jain : rvjani22@gmail.com
+- Akshay Potkhule : akshaypotkhule123@gmail.com
 
 ### Screenshots
