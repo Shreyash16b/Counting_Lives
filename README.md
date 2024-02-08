@@ -106,6 +106,30 @@ Overall, a doctor appointment app serves as a one-stop solution for individuals 
    Feel free to customize the project further based on your specific requirements and design preferences.
 ### Usage
 
+1. **Clone Repository:** Open your terminal/command prompt and use the `git clone` command followed by the repository's URL to clone the project onto your local device.
+
+2. **Open Project in IDE:** Launch your preferred IDE (e.g., IntelliJ, Android Studio, VSCode) and open the project folder.
+
+3. **Install Required Packages:** Navigate to the project directory in your terminal/command prompt and run `flutter pub get` to install all the necessary packages.
+
+4. **Set up Firebase:** Go to the Firebase Console and create a new project or select an existing one. Follow the instructions to add Firebase to your Flutter project by adding the generated configuration file.
+
+5. **Enable Google Sign-In:** In the Firebase Authentication section, enable Google Sign-In as an authentication method.
+
+6. **Set up Firestore/Realtime Database:** Create collections/documents in Firestore or Realtime Database to store appointment data such as available slots and booked appointments.
+
+7. **Implement Authentication:** Add code to your Flutter project to allow users to sign in using their Google accounts and handle authentication states properly.
+
+8. **Design and Implement Appointment Booking System:** Create UI screens/pages for users to view and book appointments. Implement functionality to display available slots, book appointments, and manage booked appointments.
+
+9. **Integrate Firebase Database:** Use Firebase APIs to store and retrieve appointment data from Firestore or Realtime Database.
+
+10. **Test the Application:** Thoroughly test the app to ensure all features work as expected, including authentication flows and appointment booking functionality.
+
+11. **Deployment:** Once testing is successful, deploy the app to your preferred platform such as the Google Play Store or Apple App Store.
+
+12. **Collaboration:** If you wish to collaborate on the project, reach out to the project owner or designated collaborators for further details.
+
 ### Team Members
 
 - Shreyash Borde : shreyashborde@gmail.com
@@ -114,7 +138,7 @@ Overall, a doctor appointment app serves as a one-stop solution for individuals 
 - Ojasvi Sonone : ossonone_b22@ee.vjti.ac.in
 
 ### Mentors
-- Rushi Jain : rvjani22@gmail.com
+- Rushi Jani : rvjani22@gmail.com
 - Akshay Potkhule : akshaypotkhule123@gmail.com
 
 ### Screenshots
