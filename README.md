@@ -60,17 +60,13 @@ Overall, a doctor appointment app serves as a one-stop solution for individuals 
 - Flutter
 - Dart
 ### Back-end
-- Flutter
-
+- Dart
 ### Database
 - Firebase
-### Computer Vision
-
 ### Progress
-#### Fully Implemented Features
+**Fully Implemented Features**
 
-#### Partially Implemented Features
-
+**Partially Implemented Features**
 
 ### Future Scope 
 
