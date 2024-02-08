@@ -46,6 +46,10 @@ class _SignUpFormState extends State<SignUpForm> {
               'weight' : null,
               'dob' : null,
               'gender' : null,
+              'aadharno' : null,
+              'pancard' : null,
+              'passport' : null,
+              'voterid' : null,
               });
       Navigator.of(context).push(
         MaterialPageRoute(

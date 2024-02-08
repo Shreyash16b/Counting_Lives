@@ -18,7 +18,7 @@ class DatabaseService {
       String countryValue,
       String stateValue,
       String hospitalEmail,
-      String cityValue) async {
+      String cityValue,) async {
     return await hospitalCollection.doc(hid).set(
       {
         "hospitalName": hospitalName,
@@ -40,6 +40,7 @@ class DatabaseService {
         "sonography": false,
         "twod": false,
         "doppler": false,
+        "services" : null,
       },
     );
   }
@@ -55,6 +56,7 @@ class DatabaseService {
     bool sonography,
     bool twod,
     bool doppler,
+    List<String> services_list,
   ) async {
     return await hospitalCollection.doc(hid).update({
       "fromDay": fromDay,
@@ -67,6 +69,7 @@ class DatabaseService {
       "sonography": sonography,
       "twod": twod,
       "doppler": doppler,
+      "services" : services_list,
     });
   }
 }

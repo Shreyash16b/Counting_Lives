@@ -49,11 +49,11 @@ class AppRoutes {
   static const String appNavigationScreen = '/app_navigation_screen';
 
   static Map<String, WidgetBuilder> routes = {
-    servicesScreen: (context) => ServicesScreen(),
+    servicesScreen: (context) => ServicesScreen(uid: ''),
     serviceProfileTabContainerScreen: (context) =>
-        ServiceProfileTabContainerScreen(),
+        ServiceProfileTabContainerScreen(hid: '',),
     serviceAppointmentBookOneScreen: (context) =>
-        ServiceAppointmentBookOneScreen(),
+        ServiceAppointmentBookOneScreen(hid: '',),
     serviceAppointmentBookTwoScreen: (context) =>
         ServiceAppointmentBookTwoScreen(),
     serviceAppointmentBookSuccessScreen: (context) =>

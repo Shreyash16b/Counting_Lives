@@ -18,7 +18,7 @@ class HospitalSignUp3 extends StatefulWidget {
 
 class _HospitalSignUp3State extends State<HospitalSignUp3> {
   final formkey = GlobalKey<FormState>();
-  List servicesChecked = [];
+  List<String> servicesChecked = [];
   bool _mri = false;
   bool _ct = false;
   bool _twod = false;
@@ -254,7 +254,7 @@ class _HospitalSignUp3State extends State<HospitalSignUp3> {
                       "MRI",
                     ],
                     checkBoxButtonValues: (values) {
-                      servicesChecked = values;
+                      servicesChecked = values.map((e) => e.toString()).toList();
                       print(servicesChecked);
                     },
                     spacing: 0,
@@ -339,6 +339,7 @@ class _HospitalSignUp3State extends State<HospitalSignUp3> {
                           servicesChecked.contains("Sonography"),
                           servicesChecked.contains("2D"),
                           servicesChecked.contains("Doppler"),
+                          servicesChecked,
                         );
                         nextScreen(context, HospitalUpcomingAppointments(upcomingAppointments: 3, hospitalId: widget.hid));
                       },

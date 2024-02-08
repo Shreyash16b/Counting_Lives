@@ -50,8 +50,8 @@ class _UserUpcomingAppointmentsState extends State<UserUpcomingAppointments> {
                     return HospitalCard(
                         service: "MRI",
                         hospitalName: "hospitalName",
-                        fromTime: TimeOfDay(hour: 10, minute: 0),
-                        toTime: TimeOfDay(hour: 10, minute: 0),
+                        fromTime: '',
+                        toTime: '',
                         hospitalAddress: "hospitalAddress");
                   }),
             )

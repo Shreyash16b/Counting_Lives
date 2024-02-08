@@ -5,6 +5,7 @@ import 'package:counting_lives/widgets/app_bar/appbar_title.dart';
 import 'package:counting_lives/widgets/app_bar/appbar_trailing_image.dart';
 import 'package:counting_lives/widgets/app_bar/custom_app_bar.dart';
 import 'package:counting_lives/widgets/custom_elevated_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:counting_lives/core/utils/image_constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -87,7 +88,7 @@ class ServiceAppointmentBookSuccessScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (ctx) => ServicesScreen(),
+                        builder: (ctx) => ServicesScreen(uid: FirebaseAuth.instance.currentUser!.uid,),
                       ),
                     );
                   },

@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'Constants/constants.dart';
 
 class HospitalCard extends StatefulWidget {
-  final String hospitalName;
-  final String service;
-  final TimeOfDay fromTime;
-  final TimeOfDay toTime;
-  final String hospitalAddress;
+  final String? hospitalName;
+  final String? service;
+  final String? fromTime;
+  final String? toTime;
+  final String? hospitalAddress;
   const HospitalCard(
       {super.key,
       required this.hospitalName,
@@ -39,21 +39,23 @@ class _HospitalCardState extends State<HospitalCard> {
               "assets/images/Sample_User_Icon.png",
               height: 100,
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  widget.hospitalName,
-                  style: const TextStyle(color: Constants.pink2, fontSize: 16),
-                ),
-                Text(widget.service,
-                    style: const TextStyle(fontSize: 14, color: Colors.grey)),
-                Text(widget.hospitalAddress,
-                    style: const TextStyle(fontSize: 14, color: Colors.grey)),
-                Text(
-                    "${widget.fromTime.format(context)} to ${widget.toTime.format(context)}",
-                    style: const TextStyle(fontSize: 14, color: Colors.grey))
-              ],
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    widget.hospitalName!,
+                    style: const TextStyle(color: Constants.pink2, fontSize: 16),
+                  ),
+                  Text(widget.service!,
+                      style: const TextStyle(fontSize: 14, color: Colors.grey)),
+                  Text(widget.hospitalAddress!, overflow: TextOverflow.clip,
+                      style: const TextStyle(fontSize: 14, color: Colors.grey)),
+                  Text(
+                      "${widget.fromTime} to ${widget.toTime}",
+                      style: const TextStyle(fontSize: 14, color: Colors.blue))
+                ],
+              ),
             )
           ],
         ),

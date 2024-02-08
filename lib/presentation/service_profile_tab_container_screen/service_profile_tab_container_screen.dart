@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:counting_lives/core/app_export.dart';
 import 'package:counting_lives/presentation/service_profile_details_page/service_profile_details_page.dart';
 import 'package:counting_lives/presentation/service_profile_page/service_profile_page.dart';
@@ -13,7 +14,8 @@ import 'package:counting_lives/presentation/service_appointment_book_one_screen/
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ServiceProfileTabContainerScreen extends StatefulWidget {
-  const ServiceProfileTabContainerScreen({super.key});
+  final String hid;
+  const ServiceProfileTabContainerScreen({super.key, required this.hid});
 
   @override
   ServiceProfileTabContainerScreenState createState() =>
@@ -25,9 +27,35 @@ class ServiceProfileTabContainerScreenState
     extends State<ServiceProfileTabContainerScreen>
     with TickerProviderStateMixin {
   late TabController tabviewController;
+  String? phoneNumber;
+  String? hName;
+
+  Future<String> getPhone() async {
+    final userCreds = await FirebaseFirestore.instance
+        .collection('hospital')
+        .doc(widget.hid)
+        .get();
+    return userCreds.data()!['hospitalPhoneNumber'];
+  }
+
+  Future<String> gethName() async {
+    final userCreds = await FirebaseFirestore.instance
+        .collection('hospital')
+        .doc(widget.hid)
+        .get();
+    return userCreds.data()!['hospitalName'];
+  }
 
   @override
   void initState() {
+    getPhone().then((value) {
+      setState(() {
+        phoneNumber = value;
+      });
+    });
+    gethName().then((value) {
+      hName = value;
+    });
     super.initState();
     tabviewController = TabController(length: 3, vsync: this);
   }
@@ -54,7 +82,7 @@ class ServiceProfileTabContainerScreenState
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (ctx) => ServiceAppointmentBookOneScreen(),
+                        builder: (ctx) => ServiceAppointmentBookOneScreen(hid: widget.hid,),
                       ),
                     );
                   }),
@@ -66,7 +94,9 @@ class ServiceProfileTabContainerScreenState
                   child: TabBarView(
                     controller: tabviewController,
                     children: [
-                      ServiceProfilePage(),
+                      ServiceProfilePage(
+                        hid: widget.hid,
+                      ),
                       ServiceProfileReviewPage(),
                       ServiceProfileDetailsPage()
                     ],
@@ -88,7 +118,7 @@ class ServiceProfileTabContainerScreenState
             imagePath: ImageConstant.imgArrowDown,
             margin: EdgeInsets.only(left: 26.h, top: 22.v, bottom: 22.v)),
         centerTitle: true,
-        title: AppbarTitle(text: "Hospital Name"),
+        title: AppbarTitle(text:(hName == null)?'Loading' : hName!),
         actions: [
           AppbarTrailingImage(
               imagePath: ImageConstant.imgSearch,
@@ -129,8 +159,8 @@ class ServiceProfileTabContainerScreenState
                       ),
                       Padding(
                           padding: EdgeInsets.only(left: 16.h),
-                          child: Text("Contact Number",
-                              style: CustomTextStyles.bodySmallGray70010)),
+                          child: (phoneNumber==null)?CircularProgressIndicator():Text(phoneNumber!,
+                              style: TextStyle(color: Colors.black))),
                       // Spacer(),
                       // SvgPicture.asset(
                       //     ImageConstant.imgFavorite,
@@ -151,8 +181,11 @@ class ServiceProfileTabContainerScreenState
                       ),
                       Padding(
                           padding: EdgeInsets.only(left: 16.h),
-                          child: Text("CT Scan, X Ray, MRI, Doppler, 2D",
-                              style: CustomTextStyles.bodySmallGray70010))
+                          child: Text("CT Scan, X Ray",
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              softWrap: false,
+                              style: TextStyle(color: Colors.black)))
                     ],
                   ),
                 ),
@@ -167,7 +200,7 @@ class ServiceProfileTabContainerScreenState
                     Padding(
                         padding: EdgeInsets.only(left: 15.h),
                         child: Text("4.1",
-                            style: CustomTextStyles.bodySmallGray70010))
+                            style: TextStyle(color: Colors.black)))
                   ],
                 ),
               ],

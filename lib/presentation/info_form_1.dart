@@ -240,7 +240,7 @@ class _InfoForm1State extends State<InfoForm1> {
                             });
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (ctx) => DocumentUpload(),
+                                builder: (ctx) => DocumentUpload(uid: widget.uid,),
                               ),
                             );
                           }

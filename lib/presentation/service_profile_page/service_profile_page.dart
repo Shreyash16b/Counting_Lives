@@ -1,14 +1,16 @@
+import 'dart:collection';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:counting_lives/core/app_export.dart';
 import 'package:counting_lives/widgets/custom_elevated_button.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as fs;
 
 // ignore_for_file: must_be_immutable
 class ServiceProfilePage extends StatefulWidget {
-  const ServiceProfilePage({Key? key})
-      : super(
-          key: key,
-        );
+  final String hid;
+  const ServiceProfilePage({super.key, required this.hid});
 
   @override
   ServiceProfilePageState createState() => ServiceProfilePageState();
@@ -16,7 +18,103 @@ class ServiceProfilePage extends StatefulWidget {
 
 class ServiceProfilePageState extends State<ServiceProfilePage>
     with AutomaticKeepAliveClientMixin<ServiceProfilePage> {
+  String? hospitalName;
+  String? hospitalAddress;
+  String? toDay;
+  String? fromDay;
+  String? toTime;
+  String? fromTime;
+
+  Future<String> getName() async {
+    final userCreds = await FirebaseFirestore.instance
+        .collection('hospital')
+        .doc(widget.hid)
+        .get();
+
+    return userCreds.data()!['hospitalName'];
+  }
+
+  Future<String> getAddress() async {
+    final userCreds = await FirebaseFirestore.instance
+        .collection('hospital')
+        .doc(widget.hid)
+        .get();
+
+    return userCreds.data()!['hospitalAddress'];
+  }
+
+  Future<String> getfromDay() async {
+    final userCreds = await FirebaseFirestore.instance
+        .collection('hospital')
+        .doc(widget.hid)
+        .get();
+
+    return userCreds.data()!['fromDay'];
+  }
+
+  Future<String> gettoDay() async {
+    final userCreds = await FirebaseFirestore.instance
+        .collection('hospital')
+        .doc(widget.hid)
+        .get();
+
+    return userCreds.data()!['toDay'];
+  }
+
+  Future<String> getfromTime() async {
+    final userCreds = await FirebaseFirestore.instance
+        .collection('hospital')
+        .doc(widget.hid)
+        .get();
+
+    return userCreds.data()!['fromTime'];
+  }
+
+  Future<String> gettoTime() async {
+    final userCreds = await FirebaseFirestore.instance
+        .collection('hospital')
+        .doc(widget.hid)
+        .get();
+
+    return userCreds.data()!['toTime'];
+  }
+
   @override
+  void initState() {
+    // TODO: implement initState
+    getName().then((value) {
+      setState(() {
+        hospitalName = value;
+      });
+    });
+    getAddress().then((value) {
+      setState(() {
+        hospitalAddress = value;
+      });
+    });
+    getfromDay().then((value) {
+      setState(() {
+        fromDay = value;
+      });
+    });
+    gettoDay().then((value) {
+      setState(() {
+        toDay = value;
+      });
+    });
+    getfromTime().then((value) {
+      setState(() {
+        fromTime = value;
+      });
+    });
+    gettoTime().then((value) {
+      setState(() {
+        toTime = value;
+      });
+    });
+    super.initState();
+  }
+
   bool get wantKeepAlive => true;
   @override
   Widget build(BuildContext context) {
@@ -28,7 +126,7 @@ class ServiceProfilePageState extends State<ServiceProfilePage>
           decoration: AppDecoration.fillWhiteA,
           child: Column(
             children: [
-              SizedBox(height: 23.v),
+              SizedBox(height: 30),
               _buildOpen(context),
             ],
           ),
@@ -51,213 +149,67 @@ class ServiceProfilePageState extends State<ServiceProfilePage>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
                         'assets/images/image_not_found.png',
                         height: 70.v,
                         width: 70.h,
                       ),
+                      const SizedBox( width: 15,),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            "Modern Diagnostic Center",
-                          ),
-                          Text(
-                            "Plot 47, Vakil Colony\nNear Padela Hall, \nPune,India - 411001 ",
-                            maxLines: 3,
-                          ),
+                          (hospitalName == null)
+                              ? CircularProgressIndicator()
+                              : Text(
+                                  hospitalName!,
+                                  style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+                                ),
+                          (hospitalAddress == null)
+                              ? CircularProgressIndicator()
+                              : Text(
+                                  hospitalAddress!,
+                                  style: TextStyle(color: Colors.black),
+                                ),
                         ],
                       ),
                     ],
                   ),
                 ],
               ),
-              CustomElevatedButton(
-                onPressed: () {},
-                height: 30.v,
-                width: 90.h,
-                text: "Open",
-                margin: EdgeInsets.only(
-                  top: 2.v,
-                  bottom: 43.v,
-                ),
-                buttonStyle: CustomButtonStyles.fillTealA,
-              ),
             ],
           ),
         ),
         SizedBox(height: 13.v),
-        Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: 25.h,
-            vertical: 22.v,
-          ),
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: fs.Svg(
-                ImageConstant.imgGroup9,
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(height: 30),
+            Padding(
+              padding: EdgeInsets.only(
+                left: 18.h,
+                right: 23.h,
               ),
-              fit: BoxFit.cover,
+              child: (fromDay == null || toDay == null)
+                  ? CircularProgressIndicator()
+                  : Text("From $fromDay to $toDay", style: TextStyle(color: Colors.black, fontSize: 20),),
             ),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 3.v),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: 18.h,
-                  right: 23.h,
-                ),
-                child: _buildEightyFive(
-                  context,
-                  day: "Monday:",
-                  time: "10 am - 1 pm | 5 pm to 9 pm",
-                ),
+            SizedBox(height: 30),
+            Padding(
+              padding: EdgeInsets.only(
+                left: 18.h,
+                right: 23.h,
               ),
-              SizedBox(height: 8.v),
-              Divider(
-                color: appTheme.whiteA700,
-              ),
-              SizedBox(height: 10.v),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: 18.h,
-                  right: 23.h,
-                ),
-                child: _buildEightyFive(
-                  context,
-                  day: "Tuesday:",
-                  time: "10 am - 1 pm | 5 pm to 9 pm",
-                ),
-              ),
-              SizedBox(height: 8.v),
-              Divider(
-                color: appTheme.whiteA700,
-              ),
-              SizedBox(height: 10.v),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: 18.h,
-                  right: 23.h,
-                ),
-                child: _buildEightyFive(
-                  context,
-                  day: "Wednesday:",
-                  time: "10 am - 1 pm | 5 pm to 9 pm",
-                ),
-              ),
-              SizedBox(height: 8.v),
-              Divider(
-                color: appTheme.whiteA700,
-              ),
-              SizedBox(height: 9.v),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: 18.h,
-                  right: 23.h,
-                ),
-                child: _buildEightyFive(
-                  context,
-                  day: "Thursday:",
-                  time: "10 am - 1 pm | 5 pm to 9 pm",
-                ),
-              ),
-              SizedBox(height: 9.v),
-              Divider(
-                color: appTheme.whiteA700,
-              ),
-              SizedBox(height: 9.v),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: 18.h,
-                  right: 23.h,
-                ),
-                child: _buildEightyFive(
-                  context,
-                  day: "Friday:",
-                  time: "10 am - 1 pm | 5 pm to 9 pm",
-                ),
-              ),
-              SizedBox(height: 8.v),
-              Divider(
-                color: appTheme.whiteA700,
-              ),
-              SizedBox(height: 10.v),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: 18.h,
-                  right: 23.h,
-                ),
-                child: _buildEightyFive(
-                  context,
-                  day: "Saturday:",
-                  time: "10 am - 1 pm | 5 pm to 9 pm",
-                ),
-              ),
-              SizedBox(height: 8.v),
-              Divider(
-                color: appTheme.whiteA700,
-              ),
-              SizedBox(height: 9.v),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 18.h),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(top: 1.v),
-                        child: Text(
-                          "Sunday:",
-                          style: CustomTextStyles.bodyMediumGray900,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 45.h),
-                        child: Text(
-                          "Closed",
-                          style: CustomTextStyles.bodyMediumGray900,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: 8.v),
-              Divider(
-                color: appTheme.whiteA700,
-              ),
-            ],
-          ),
+              child: (fromDay == null || toDay == null)
+                  ? CircularProgressIndicator()
+                  : Text("From $fromTime to $toTime", style: TextStyle(color: Colors.black, fontSize: 20),),
+            ),
+          ],
         ),
       ],
     );
   }
 
   /// Common widget
-  Widget _buildEightyFive(
-    BuildContext context, {
-    required String day,
-    required String time,
-  }) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          day,
-          style: CustomTextStyles.bodyMediumGray900.copyWith(
-            color: appTheme.gray900,
-          ),
-        ),
-        Text(
-          time,
-          style: CustomTextStyles.bodyMediumGray900.copyWith(
-            color: appTheme.gray900,
-          ),
-        ),
-      ],
-    );
-  }
 }

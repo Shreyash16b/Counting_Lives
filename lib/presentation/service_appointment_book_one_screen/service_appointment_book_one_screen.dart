@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:counting_lives/core/app_export.dart';
 import 'package:counting_lives/presentation/service_appointment_book_success_screen/service_appointment_book_success_screen.dart';
 import 'package:counting_lives/widgets/app_bar/appbar_leading_image.dart';
@@ -11,7 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class ServiceAppointmentBookOneScreen extends StatefulWidget {
-  const ServiceAppointmentBookOneScreen({super.key});
+  final String hid;
+  const ServiceAppointmentBookOneScreen({super.key, required this.hid});
 
   @override
   State<ServiceAppointmentBookOneScreen> createState() =>
@@ -22,6 +24,7 @@ class _ServiceAppointmentBookOneScreenState
     extends State<ServiceAppointmentBookOneScreen> {
   final _RefNameController = TextEditingController();
   final formatter = DateFormat.yMd();
+  List<String>? serv_provided;
   List<String> serv_name = [
     "X-Ray",
     "CT-Scan",
@@ -33,6 +36,10 @@ class _ServiceAppointmentBookOneScreenState
   var _datevar;
   var _timevar;
   String? service_value;
+  Future<List> getService()async{
+    final userCreds = await FirebaseFirestore.instance.collection('hospital').doc(widget.hid).get();
+    return userCreds.data()!['services'];
+  }
   void AppointmentDatePicker() async {
     final now = DateTime.now();
     final lastdate = DateTime(now.year, now.month + 1, now.day);
@@ -58,6 +65,15 @@ class _ServiceAppointmentBookOneScreenState
     super.dispose();
   }
 
+  @override
+  void initState() {
+    getService().then((value) {
+      setState(() {
+        serv_provided = value.cast<String>();
+      });
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -160,7 +176,7 @@ class _ServiceAppointmentBookOneScreenState
             DropdownButton(
                 value: service_value,
                 hint: Text("Select Service"),
-                items: serv_name
+                items: serv_provided!
                     .map((e) => DropdownMenuItem(
                           child: Text(e),
                           value: e,
