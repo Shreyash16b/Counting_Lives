@@ -16,6 +16,7 @@ class ServicesScreen extends StatelessWidget {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (ctx) => ServiceProfileTabContainerScreen(
+          uid: uid,
           hid: hid,
         ),
       ),
@@ -95,7 +96,8 @@ class ServicesScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 TextButton(
-                                  onPressed: () => _onSelectText(context,enteredlist[index].id),
+                                  onPressed: () => _onSelectText(
+                                      context, enteredlist[index].id),
                                   child: Text(
                                     enteredlist[index]['hospitalName'],
                                     style: TextStyle(fontSize: 20),

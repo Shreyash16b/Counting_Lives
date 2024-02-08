@@ -140,7 +140,7 @@ class ServiceProfilePageState extends State<ServiceProfilePage>
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.h),
+          padding: EdgeInsets.symmetric(horizontal: 14.h),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -156,7 +156,9 @@ class ServiceProfilePageState extends State<ServiceProfilePage>
                         height: 70.v,
                         width: 70.h,
                       ),
-                      const SizedBox( width: 15,),
+                      const SizedBox(
+                        width: 15,
+                      ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -164,7 +166,10 @@ class ServiceProfilePageState extends State<ServiceProfilePage>
                               ? CircularProgressIndicator()
                               : Text(
                                   hospitalName!,
-                                  style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
                                 ),
                           (hospitalAddress == null)
                               ? CircularProgressIndicator()
@@ -193,7 +198,10 @@ class ServiceProfilePageState extends State<ServiceProfilePage>
               ),
               child: (fromDay == null || toDay == null)
                   ? CircularProgressIndicator()
-                  : Text("From $fromDay to $toDay", style: TextStyle(color: Colors.black, fontSize: 20),),
+                  : Text(
+                      "From $fromDay to $toDay",
+                      style: TextStyle(color: Colors.black, fontSize: 20),
+                    ),
             ),
             SizedBox(height: 30),
             Padding(
@@ -203,7 +211,10 @@ class ServiceProfilePageState extends State<ServiceProfilePage>
               ),
               child: (fromDay == null || toDay == null)
                   ? CircularProgressIndicator()
-                  : Text("From $fromTime to $toTime", style: TextStyle(color: Colors.black, fontSize: 20),),
+                  : Text(
+                      "From $fromTime to $toTime",
+                      style: TextStyle(color: Colors.black, fontSize: 20),
+                    ),
             ),
           ],
         ),

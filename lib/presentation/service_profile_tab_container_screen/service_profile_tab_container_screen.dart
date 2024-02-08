@@ -14,8 +14,9 @@ import 'package:counting_lives/presentation/service_appointment_book_one_screen/
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ServiceProfileTabContainerScreen extends StatefulWidget {
+  final String uid;
   final String hid;
-  const ServiceProfileTabContainerScreen({super.key, required this.hid});
+  const ServiceProfileTabContainerScreen({super.key, required this.hid, required this.uid});
 
   @override
   ServiceProfileTabContainerScreenState createState() =>
@@ -82,7 +83,10 @@ class ServiceProfileTabContainerScreenState
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (ctx) => ServiceAppointmentBookOneScreen(hid: widget.hid,),
+                        builder: (ctx) => ServiceAppointmentBookOneScreen(
+                          uid: widget.uid,
+                          hid: widget.hid,
+                        ),
                       ),
                     );
                   }),
@@ -118,7 +122,7 @@ class ServiceProfileTabContainerScreenState
             imagePath: ImageConstant.imgArrowDown,
             margin: EdgeInsets.only(left: 26.h, top: 22.v, bottom: 22.v)),
         centerTitle: true,
-        title: AppbarTitle(text:(hName == null)?'Loading' : hName!),
+        title: AppbarTitle(text: (hName == null) ? 'Loading' : hName!),
         actions: [
           AppbarTrailingImage(
               imagePath: ImageConstant.imgSearch,
@@ -159,8 +163,10 @@ class ServiceProfileTabContainerScreenState
                       ),
                       Padding(
                           padding: EdgeInsets.only(left: 16.h),
-                          child: (phoneNumber==null)?CircularProgressIndicator():Text(phoneNumber!,
-                              style: TextStyle(color: Colors.black))),
+                          child: (phoneNumber == null)
+                              ? CircularProgressIndicator()
+                              : Text(phoneNumber!,
+                                  style: TextStyle(color: Colors.black))),
                       // Spacer(),
                       // SvgPicture.asset(
                       //     ImageConstant.imgFavorite,
@@ -199,8 +205,8 @@ class ServiceProfileTabContainerScreenState
                     ),
                     Padding(
                         padding: EdgeInsets.only(left: 15.h),
-                        child: Text("4.1",
-                            style: TextStyle(color: Colors.black)))
+                        child:
+                            Text("4.1", style: TextStyle(color: Colors.black)))
                   ],
                 ),
               ],

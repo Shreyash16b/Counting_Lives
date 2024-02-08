@@ -37,7 +37,7 @@ class _UserSettingsState extends State<UserSettings> {
         ),
         title: const Text("Profile Settings"),
       ),
-      drawer: const UserProfileDrawer(userName: "userName"),
+      drawer: const UserProfileDrawer(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.only(left: 35, right: 35),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

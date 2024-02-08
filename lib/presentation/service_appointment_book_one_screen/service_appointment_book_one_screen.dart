@@ -8,12 +8,15 @@ import 'package:counting_lives/widgets/app_bar/custom_app_bar.dart';
 import 'package:counting_lives/widgets/custom_checkbox_button.dart';
 import 'package:counting_lives/widgets/custom_elevated_button.dart';
 import 'package:counting_lives/widgets/custom_text_form_field.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class ServiceAppointmentBookOneScreen extends StatefulWidget {
   final String hid;
-  const ServiceAppointmentBookOneScreen({super.key, required this.hid});
+  final String uid;
+  const ServiceAppointmentBookOneScreen(
+      {super.key, required this.hid, required this.uid});
 
   @override
   State<ServiceAppointmentBookOneScreen> createState() =>
@@ -24,7 +27,7 @@ class _ServiceAppointmentBookOneScreenState
     extends State<ServiceAppointmentBookOneScreen> {
   final _RefNameController = TextEditingController();
   final formatter = DateFormat.yMd();
-  List<String>? serv_provided;
+  List<String> serv_provided = [];
   List<String> serv_name = [
     "X-Ray",
     "CT-Scan",
@@ -36,10 +39,37 @@ class _ServiceAppointmentBookOneScreenState
   var _datevar;
   var _timevar;
   String? service_value;
-  Future<List> getService()async{
-    final userCreds = await FirebaseFirestore.instance.collection('hospital').doc(widget.hid).get();
+
+  Future<void> addAppointments() async {
+    final hospitalCreds =
+        await FirebaseFirestore.instance.collection('hospital').doc(widget.hid);
+
+    final userCreds = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(await FirebaseAuth.instance.currentUser!.uid);
+
+    await hospitalCreds.collection("appointments").doc().set({
+      "time": _timevar,
+      "date": _datevar,
+      "Dr. name": _RefNameController.text,
+      "Patient uid": await FirebaseAuth.instance.currentUser!.uid
+    });
+
+    await userCreds.collection("appointments").doc().set({
+      "time": _timevar,
+      "date": _datevar,
+      "Dr. name": _RefNameController.text
+    });
+  }
+
+  Future<List> getService() async {
+    final userCreds = await FirebaseFirestore.instance
+        .collection('hospital')
+        .doc(widget.hid)
+        .get();
     return userCreds.data()!['services'];
   }
+
   void AppointmentDatePicker() async {
     final now = DateTime.now();
     final lastdate = DateTime(now.year, now.month + 1, now.day);
@@ -68,12 +98,15 @@ class _ServiceAppointmentBookOneScreenState
   @override
   void initState() {
     getService().then((value) {
+      print(value);
       setState(() {
-        serv_provided = value.cast<String>();
+        serv_provided = (value).map((e) => e as String).toList();
       });
     });
+
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -102,8 +135,13 @@ class _ServiceAppointmentBookOneScreenState
                 margin: EdgeInsets.symmetric(horizontal: 26.h),
                 buttonStyle: CustomButtonStyles.fillPrimary,
                 onPressed: () {
+                  addAppointments();
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (ctx) => ServiceAppointmentBookSuccessScreen(date: _datevar, time: _timevar, servicename: service_value,)));
+                      builder: (ctx) => ServiceAppointmentBookSuccessScreen(
+                            date: _datevar,
+                            time: _timevar,
+                            servicename: service_value,
+                          )));
                 },
               ),
               SizedBox(height: 5.v),

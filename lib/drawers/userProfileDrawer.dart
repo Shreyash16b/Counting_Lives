@@ -1,18 +1,41 @@
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import '../Constants/constants.dart';
 import '../Helper/HelperFunctions.dart';
 import '../pages/User/UserProfile.dart';
 
 class UserProfileDrawer extends StatefulWidget {
-  final String userName;
-  const UserProfileDrawer({super.key, required this.userName});
+  const UserProfileDrawer({
+    super.key,
+  });
 
   @override
   State<UserProfileDrawer> createState() => _UserProfileDrawerState();
 }
 
 class _UserProfileDrawerState extends State<UserProfileDrawer> {
+  String name = '';
+  Future<String> getName() async {
+    final userCreds = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(await FirebaseAuth.instance.currentUser!.uid)
+        .get();
+    return userCreds.data()!['name'];
+  }
+
+  @override
+  void initState() {
+    setState(() {
+      getName().then((value) {
+        name = value;
+      });
+    });
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -32,8 +55,8 @@ class _UserProfileDrawerState extends State<UserProfileDrawer> {
               const SizedBox(
                 height: 20,
               ),
-               Text(
-                widget.userName,
+              Text(
+                name,
                 style: TextStyle(fontSize: 24, color: Colors.white),
               ),
               Expanded(
@@ -60,15 +83,7 @@ class _UserProfileDrawerState extends State<UserProfileDrawer> {
                           style: TextStyle(color: Constants.green1),
                         ),
                         onTap: () {
-                          nextScreen(
-                              context,
-                              const UserProfile(
-                                  age: 19,
-                                  userName: "Shreyash",
-                                  userEmail: "shreyash@mail.com",
-                                  phoneNumber: "99999999",
-                                  height: 172,
-                                  weight: 65));
+                          nextScreen(context, const UserProfile());
                         },
                       ),
                       const SizedBox(

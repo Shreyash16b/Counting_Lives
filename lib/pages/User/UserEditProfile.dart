@@ -26,7 +26,7 @@ class _UserEditProfileState extends State<UserEditProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const UserProfileDrawer(userName: "userName"),
+      drawer: const UserProfileDrawer(),
       backgroundColor: Colors.white,
       appBar: AppBar(
         leading: const Icon(

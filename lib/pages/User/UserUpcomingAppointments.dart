@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../Constants/constants.dart';
@@ -17,7 +16,7 @@ class _UserUpcomingAppointmentsState extends State<UserUpcomingAppointments> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: UserProfileDrawer(userName: "userName"),
+      drawer: UserProfileDrawer(),
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,

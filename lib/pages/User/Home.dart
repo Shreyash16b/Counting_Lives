@@ -21,6 +21,7 @@ class UserHome extends StatefulWidget {
 }
 
 class _UserHomeState extends State<UserHome> {
+  final String uid = FirebaseAuth.instance.currentUser!.uid;
   List catergoies = ["Cardiologist", "Dentist", "Orthopedic", "Chest"];
   List categoriesIcons = [
     "assets/images/cardiologist.png",
@@ -39,7 +40,10 @@ class _UserHomeState extends State<UserHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const UserProfileDrawer(userName: "userName"),
+      appBar: AppBar(
+        title: Text("Services"),
+      ),
+      drawer: const UserProfileDrawer(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -187,6 +191,7 @@ class _UserHomeState extends State<UserHome> {
                                   nextScreen(
                                       context,
                                       ServiceProfileTabContainerScreen(
+                                        uid: uid,
                                         hid: enteredlist[index].id,
                                       ));
                                 },

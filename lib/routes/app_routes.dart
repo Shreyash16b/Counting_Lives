@@ -51,9 +51,9 @@ class AppRoutes {
   static Map<String, WidgetBuilder> routes = {
     servicesScreen: (context) => ServicesScreen(uid: ''),
     serviceProfileTabContainerScreen: (context) =>
-        ServiceProfileTabContainerScreen(hid: '',),
+        ServiceProfileTabContainerScreen(hid: '', uid: ''),
     serviceAppointmentBookOneScreen: (context) =>
-        ServiceAppointmentBookOneScreen(hid: '',),
+        ServiceAppointmentBookOneScreen(hid: '', uid: ''),
     serviceAppointmentBookTwoScreen: (context) =>
         ServiceAppointmentBookTwoScreen(),
     serviceAppointmentBookSuccessScreen: (context) =>

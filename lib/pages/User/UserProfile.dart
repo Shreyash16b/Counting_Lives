@@ -1,4 +1,5 @@
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../Constants/constants.dart';
@@ -7,30 +8,108 @@ import '../../drawers/userProfileDrawer.dart';
 import 'UserEditProfile.dart';
 
 class UserProfile extends StatefulWidget {
-  final int age;
-  final String userName;
-  final String userEmail;
-  final String phoneNumber;
-  final int height;
-  final int weight;
-  const UserProfile(
-      {super.key,
-      required this.age,
-      required this.userName,
-      required this.userEmail,
-      required this.phoneNumber,
-      required this.height,
-      required this.weight});
+  const UserProfile({super.key});
 
   @override
   State<UserProfile> createState() => _UserProfileState();
 }
 
 class _UserProfileState extends State<UserProfile> {
+  String? name;
+  String? number;
+  int? weight;
+  int? age;
+  int? height;
+  String? email;
+  Future<String> getName() async {
+    final userCreds = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(await FirebaseAuth.instance.currentUser!.uid)
+        .get();
+    return userCreds.data()!['name'];
+  }
+
+  Future<String> getNumber() async {
+    final userCreds = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(await FirebaseAuth.instance.currentUser!.uid)
+        .get();
+    return userCreds.data()!['phoneNumber'];
+  }
+
+  Future<String> getEmail() async {
+    final userCreds = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(await FirebaseAuth.instance.currentUser!.uid)
+        .get();
+    return userCreds.data()!['email'];
+  }
+
+  Future<int> getAge() async {
+    final userCreds = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(await FirebaseAuth.instance.currentUser!.uid)
+        .get();
+    return userCreds.data()!['age'];
+  }
+
+  Future<int> getWeight() async {
+    final userCreds = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(await FirebaseAuth.instance.currentUser!.uid)
+        .get();
+    return userCreds.data()!['weight'];
+  }
+
+  Future<int> getHeight() async {
+    final userCreds = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(await FirebaseAuth.instance.currentUser!.uid)
+        .get();
+    return userCreds.data()!['height'];
+  }
+
+  @override
+  void initState() {
+    getAge().then((value) {
+      setState(() {
+        age = value;
+      });
+    });
+
+    getName().then((value) {
+      setState(() {
+        name = value;
+      });
+    });
+    getNumber().then((value) {
+      setState(() {
+        number = value;
+      });
+    });
+    getEmail().then((value) {
+      setState(() {
+        email = value;
+      });
+    });
+    getHeight().then((value) {
+      setState(() {
+        height = value;
+      });
+    });
+    getWeight().then((value) {
+      setState(() {
+        weight = value;
+      });
+    });
+    //TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const UserProfileDrawer(userName: "userName"),
+      drawer: const UserProfileDrawer(),
       body: Material(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,7 +154,7 @@ class _UserProfileState extends State<UserProfile> {
                           children: [
                             Image.asset("assets/images/age.png"),
                             const Text("AGE"),
-                            Text(widget.age.toString()),
+                            Text(age.toString()),
                           ],
                         ),
                       ),
@@ -91,7 +170,7 @@ class _UserProfileState extends State<UserProfile> {
                           children: [
                             Image.asset("assets/images/height.png"),
                             const Text("HEIGHT"),
-                            Text(widget.height.toString()),
+                            Text(height.toString()),
                           ],
                         ),
                       ),
@@ -107,7 +186,7 @@ class _UserProfileState extends State<UserProfile> {
                           children: [
                             Image.asset("assets/images/weight.png"),
                             const Text("WEIGHT"),
-                            Text(widget.weight.toString())
+                            Text(weight.toString())
                           ],
                         ),
                       ),
@@ -125,8 +204,9 @@ class _UserProfileState extends State<UserProfile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    widget.userEmail,
-                    style: const TextStyle(fontSize: 20, color: Constants.green1),
+                    email!,
+                    style:
+                        const TextStyle(fontSize: 20, color: Constants.green1),
                   ),
                   const SizedBox(
                     height: 10,
@@ -142,8 +222,9 @@ class _UserProfileState extends State<UserProfile> {
                     height: 20,
                   ),
                   Text(
-                    widget.phoneNumber,
-                    style: const TextStyle(fontSize: 20, color: Constants.green1),
+                    number!,
+                    style:
+                        const TextStyle(fontSize: 20, color: Constants.green1),
                   ),
                   const SizedBox(
                     height: 10,
@@ -178,10 +259,10 @@ class _UserProfileState extends State<UserProfile> {
                           nextScreen(
                               context,
                               UserEditProfile(
-                                userEmail: widget.userEmail,
-                                weight: widget.weight,
-                                height: widget.height,
-                                userName: widget.userName,
+                                userEmail: email!,
+                                weight: weight!,
+                                height: height!,
+                                userName: name!,
                               ));
                         },
                         child: const Row(
