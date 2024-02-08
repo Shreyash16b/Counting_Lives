@@ -114,7 +114,7 @@ Overall, a doctor appointment app serves as a one-stop solution for individuals 
 - Ojasvi Sonone : ossonone_b22@ee.vjti.ac.in
 
 ### Mentors
-- Rushi Jain : rvjani22@gmail.com
+- Rushi Vipul Jani : rvjani22@gmail.com
 - Akshay Potkhule : akshaypotkhule123@gmail.com
 
 ### Screenshots
