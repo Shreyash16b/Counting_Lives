@@ -78,25 +78,25 @@ Overall, a doctor appointment app serves as a one-stop solution for individuals 
 - Any IDE with Flutter SDK installed (e.g., IntelliJ, Android Studio, VSCode, etc.)
 - A little knowledge of Dart and Flutter
   1 GB storage
-- **Setup:**
-   Clone the GitHub repository into your local device.
-   Open the project folder in your preferred IDE with Flutter SDK installed (e.g., IntelliJ, Android Studio, VSCode, etc.).
-   Install all the required packages by running flutter pub get from the terminal/command prompt.
-- Set up Firebase for authentication and database:
+**Setup:**
+- Clone the GitHub repository into your local device.
+- Open the project folder in your preferred IDE with Flutter SDK installed (e.g., IntelliJ, Android Studio, VSCode, etc.).
+- Install all the required packages by running flutter pub get from the terminal/command prompt.
+- *Set up Firebase for authentication and database:*
    Go to the Firebase Console (console.firebase.google.com).
    Create a new project or select an existing one.
    Follow the instructions to add Firebase to your Flutter project. This usually involves adding a configuration file to your project.
    Enable Google Sign-In authentication method in Firebase Authentication.
    In Firestore or Realtime Database, create collections/documents to store appointment data.
-- Implement authentication with Google Sign-In:
+- *Implement authentication with Google Sign-In:*
    Add necessary code to allow users to sign in using their Google accounts.
    Ensure to handle authentication states properly within the app.
-- Design and implement the doctor appointment booking system:
+- *Design and implement the doctor appointment booking system:*
    Create screens/pages for users to view available appointments, book appointments, view their booked appointments, etc.
    Implement functionality to display available appointment slots, book appointments, and manage booked appointments.
-- Integrate Firebase Firestore/Realtime Database:
+- *Integrate Firebase Firestore/Realtime Database:*
    Use Firebase to store and retrieve appointment data, such as available slots, booked appointments, etc.
-- Test the application:
+- *Test the application:*
    Test various scenarios to ensure the app behaves as expected, including authentication flows, appointment booking, etc.
 - **Deployment:**
     Once testing is successful, you can deploy the app to your preferred platform (e.g., Google Play Store, Apple App Store, etc.).
