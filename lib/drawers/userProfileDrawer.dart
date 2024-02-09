@@ -20,7 +20,7 @@ class _UserProfileDrawerState extends State<UserProfileDrawer> {
   Future<String> getName() async {
     final userCreds = await FirebaseFirestore.instance
         .collection('users')
-        .doc(await FirebaseAuth.instance.currentUser!.uid)
+        .doc(FirebaseAuth.instance.currentUser!.uid)
         .get();
     return userCreds.data()!['name'];
   }

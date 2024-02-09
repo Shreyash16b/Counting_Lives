@@ -24,7 +24,7 @@ class _UserProfileState extends State<UserProfile> {
   Future<String> getName() async {
     final userCreds = await FirebaseFirestore.instance
         .collection('users')
-        .doc(await FirebaseAuth.instance.currentUser!.uid)
+        .doc(FirebaseAuth.instance.currentUser!.uid)
         .get();
     return userCreds.data()!['name'];
   }
@@ -32,7 +32,7 @@ class _UserProfileState extends State<UserProfile> {
   Future<String> getNumber() async {
     final userCreds = await FirebaseFirestore.instance
         .collection('users')
-        .doc(await FirebaseAuth.instance.currentUser!.uid)
+        .doc(FirebaseAuth.instance.currentUser!.uid)
         .get();
     return userCreds.data()!['phoneNumber'];
   }
@@ -40,7 +40,7 @@ class _UserProfileState extends State<UserProfile> {
   Future<String> getEmail() async {
     final userCreds = await FirebaseFirestore.instance
         .collection('users')
-        .doc(await FirebaseAuth.instance.currentUser!.uid)
+        .doc(FirebaseAuth.instance.currentUser!.uid)
         .get();
     return userCreds.data()!['email'];
   }
@@ -48,7 +48,7 @@ class _UserProfileState extends State<UserProfile> {
   Future<int> getAge() async {
     final userCreds = await FirebaseFirestore.instance
         .collection('users')
-        .doc(await FirebaseAuth.instance.currentUser!.uid)
+        .doc(FirebaseAuth.instance.currentUser!.uid)
         .get();
     return userCreds.data()!['age'];
   }
@@ -56,7 +56,7 @@ class _UserProfileState extends State<UserProfile> {
   Future<int> getWeight() async {
     final userCreds = await FirebaseFirestore.instance
         .collection('users')
-        .doc(await FirebaseAuth.instance.currentUser!.uid)
+        .doc(FirebaseAuth.instance.currentUser!.uid)
         .get();
     return userCreds.data()!['weight'];
   }
@@ -64,7 +64,7 @@ class _UserProfileState extends State<UserProfile> {
   Future<int> getHeight() async {
     final userCreds = await FirebaseFirestore.instance
         .collection('users')
-        .doc(await FirebaseAuth.instance.currentUser!.uid)
+        .doc(FirebaseAuth.instance.currentUser!.uid)
         .get();
     return userCreds.data()!['height'];
   }

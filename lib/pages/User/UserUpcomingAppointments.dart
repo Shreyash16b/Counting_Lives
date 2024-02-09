@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../Constants/constants.dart';
@@ -43,17 +45,37 @@ class _UserUpcomingAppointmentsState extends State<UserUpcomingAppointments> {
               style: TextStyle(color: Constants.green1),
             ),
             Expanded(
-              child: ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return HospitalCard(
-                        service: "MRI",
-                        hospitalName: "hospitalName",
-                        fromTime: '',
-                        toTime: '',
-                        hospitalAddress: "hospitalAddress");
-                  }),
-            )
+                child: StreamBuilder(
+                    stream: FirebaseFirestore.instance
+                        .collection('users')
+                        .doc(FirebaseAuth.instance.currentUser!.uid)
+                        .collection('appointments')
+                        .snapshots(),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                        return const Text('Nothing here');
+                      }
+                      if (snapshot.hasError) {
+                        return const Text('Something went wrong');
+                      }
+
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Text("Loading");
+                      }
+                      return ListView.builder(
+                          itemCount: snapshot.data!.docs.length,
+                          itemBuilder: (context, index) {
+                            var entered_list = snapshot.data!.docs;
+                            var totime = int.parse(entered_list[index]['time']);
+                            return HospitalCard(
+                                hospitalName: entered_list[index][''],
+                                fromTime: entered_list[index]['time'],
+                                toTime: "",
+                                hospitalAddress: entered_list[index][''],
+                                service: entered_list[index]['']);
+                          });
+                    }))
           ],
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:counting_lives/Helper/HelperFunctions.dart';
 import 'package:counting_lives/core/app_export.dart';
+import 'package:counting_lives/pages/User/UserUpcomingAppointments.dart';
 import 'package:counting_lives/presentation/service_profile_page/service_profile_page.dart';
 import 'package:counting_lives/presentation/services_screen/services_screen.dart';
 import 'package:counting_lives/theme/custom_button_style.dart';
@@ -52,21 +53,45 @@ class _UserHomeState extends State<UserHome> {
               const SizedBox(
                 height: 25,
               ),
-              CustomElevatedButton(
-                text: "Book Service",
-                margin: EdgeInsets.symmetric(horizontal: 50.h),
-                buttonStyle: CustomButtonStyles.none,
-                decoration:
-                    CustomButtonStyles.gradientDeepOrangeToPinkDecoration,
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (ctx) => ServicesScreen(
-                        uid: FirebaseAuth.instance.currentUser!.uid,
-                      ),
-                    ),
-                  );
-                },
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CustomElevatedButton(
+                    text: "Book Service",
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    // margin: EdgeInsets.symmetric(horizontal: 50.h),
+                    buttonStyle: CustomButtonStyles.none,
+                    decoration:
+                        CustomButtonStyles.gradientDeepOrangeToPinkDecoration,
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (ctx) => ServicesScreen(
+                            uid: FirebaseAuth.instance.currentUser!.uid,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  CustomElevatedButton(
+                    text: "Show Appointments",
+                    width: MediaQuery.of(context).size.width * 0.45,
+                    // margin: EdgeInsets.symmetric(horizontal: 50.h),
+                    buttonStyle: CustomButtonStyles.none,
+                    decoration:
+                        CustomButtonStyles.gradientDeepOrangeToPinkDecoration,
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (ctx) => UserUpcomingAppointments(),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 30,
               ),
               const SizedBox(
                 height: 20,

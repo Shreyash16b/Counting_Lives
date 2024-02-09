@@ -52,13 +52,16 @@ class _ServiceAppointmentBookOneScreenState
       "time": _timevar,
       "date": _datevar,
       "Dr. name": _RefNameController.text,
-      "Patient uid": await FirebaseAuth.instance.currentUser!.uid
+      "Patient uid": await FirebaseAuth.instance.currentUser!.uid,
+      "service" : service_value
     });
 
     await userCreds.collection("appointments").doc().set({
       "time": _timevar,
       "date": _datevar,
-      "Dr. name": _RefNameController.text
+      "Dr. name": _RefNameController.text,
+      "hospitalID" : widget.hid,
+      "service" : service_value
     });
   }
 
